@@ -33,7 +33,8 @@ class MapController extends Controller
                 "title" => "Hola mundo",
                 "centerMap" => $centerMap,
                 "municipalities" => $municipalities,
-                "municipalitiesGeom" => $municipalitiesGeom
+                "municipalitiesGeom" => $municipalitiesGeom,
+                "officesLocations" => $officesLocations
             ]);
 
         } else {

@@ -106,13 +106,27 @@ function resetMapPosition(e){
 }
 
 function drawPushpins(){
-    console.dir( props.officesLocations);
     props.officesLocations.forEach(element => {
-        L.marker( L.latLng(element[0], element[1]))
-            .addTo(document.map)
-            .bindPopup( element[3])
-            .openPopup();
+        var pushpin = L.marker( L.latLng(element[0], element[1]),{
+            icon: L.icon({
+                iconUrl: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                iconSize: [24, 24]
+            }),
+            title: element[2],
+            opacity: .75,
+            riseOnHover: true
+        })
+        .addTo(document.map)
+        .bindPopup( element[3]);
+
+        pushpin.on('click', handlePushpinOnClick);
+        
     });
+}
+
+function handlePushpinOnClick(e){
+    //console.dir(e.target._latlng);
+    moveMap(e.target._latlng, 16.5);
 }
 
 function handleMunicipalityListItem(municipality){

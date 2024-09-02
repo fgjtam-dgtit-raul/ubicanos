@@ -12,7 +12,8 @@ const props = defineProps({
         default: [23.739622, -99.147968]
     },
     municipalities: Array,
-    municipalitiesGeom: Object
+    municipalitiesGeom: Object,
+    officesLocations: Array,
 });
 
 const map = ref({});
@@ -24,7 +25,7 @@ const bounds = ref({});
 const municipalitySelected = ref(null);
 
 onMounted(()=>{
-
+    
     // var map = L.map('map').setView([51.505, -0.09], 13);
 
     initializeMap();
@@ -32,7 +33,7 @@ onMounted(()=>{
 })
 
 function initializeMap() {
-
+    
     // * laod map
     document.map = L.map('map', {
         center: L.latLng( props.centerMap[0], props.centerMap[1]),
@@ -56,6 +57,8 @@ function initializeMap() {
     }).addTo(document.map);
 
     drawGeometries();
+
+    drawPushpins();
 
 }
 
@@ -102,10 +105,25 @@ function resetMapPosition(e){
     municipalitySelected.value = null;
 }
 
-function drawPushpin(){
-    // L.marker( props.centerMap).addTo(map.value)
-    //     .bindPopup('A pretty CSS popup.<br> Easily customizable.')
-    //     .openPopup();
+function drawPushpins(){
+    props.officesLocations.forEach(element => {
+        var pushpin = L.marker( L.latLng(element[0], element[1]),{
+            icon: L.icon({
+                iconUrl: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                iconSize: [24, 24]
+            })
+        })
+            .addTo(document.map)
+            .bindPopup( element[3]);
+
+        pushpin.on('click', handlePushpinOnClick);
+        
+    });
+}
+
+function handlePushpinOnClick(e){
+    //console.dir(e.target._latlng);
+    moveMap(e.target._latlng, 16.5);
 }
 
 function handleMunicipalityListItem(municipality){
