@@ -159,7 +159,7 @@ function calculateCenter(coordinates){
 
 <template>
 
-    <Head title="Profile" />
+    <Head title="Ubicacion oficinas" />
 
     <AuthenticatedLayout>
 

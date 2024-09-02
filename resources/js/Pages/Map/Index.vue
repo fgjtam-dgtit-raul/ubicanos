@@ -162,11 +162,11 @@ function calculateCenter(coordinates){
 
 <template>
 
-    <Head title="Profile" />
+    <Head title="Ubicacion oficinas" />
 
     <AuthenticatedLayout>
 
-        <div class="max-w-screen-2xl mx-auto p-2 w-full h-full gap-2 grid grid-cols-map grid-rows-map" >
+        <div class="max-w-screen-2xl mx-auto p-2 w-full h-full gap-1 grid grid-cols-map grid-rows-map shadow-lg" >
 
             <div class="h-full outline outline-1 outline-gray-200 rounded-lg bg-white overflow-y-auto row-span-2 select-none">
                 <ul class="">
