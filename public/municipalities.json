@@ -1,0 +1,205 @@
+[
+    {
+        "name": "Abasolo",
+        "locations": [
+            {
+                "title": "Unidades Generales de Investigación",
+                "address": "Calle Ignacio Zaragoza s/n, Zona Centro."
+            }
+        ]
+    },
+    {
+        "name": "Altamira",
+        "locations": [
+            {
+                "title": "Fiscalía Distrito Zona Sur",
+                "address": "Carretera de la Industria #169, Col. La Pedrera."
+            },
+            {
+                "title": "U. E. C. S.",
+                "address": "Calle 14 esquina con Clavel #800, Col. Monte Alto."
+            }
+        ]
+    },
+    {
+        "name": "Camargo",
+        "locations": [
+            {
+                "title": "Unidades Generales de Investigación",
+                "address": "Calle Agustín de Iturbide entre Dominguez y Libertad #100, Colonia Camargo."
+            }
+        ]
+    },
+    {
+        "name": "Ciudad Madero",
+        "locations": [
+            {
+                "title": "Unidades Generales de Investigación",
+                "address": "Calle Haití entre Allende y Obregón #101, Col. 1 de Mayo."
+            }
+        ]
+    },
+    {
+        "name": "Gonzalez",
+        "locations": [
+            {
+                "title": "Unidades Generales de Investigación",
+                "address": "Carretera Interestatal González-Zaragoza CP 89706."
+            }
+        ]
+    },
+    {
+        "name": "Jaumave",
+        "locations": [
+            {
+                "title": "Unidades Generales de Investigación",
+                "address": "Carretera Victoria-Tula Km. 112.5."
+            }
+        ]
+    },
+    {
+        "name": "Jiménez",
+        "locations": [
+            {
+                "title": "Unidades Generales de Investigación",
+                "address": "Calle San Pedro entre Río Guayalejo y Calle 4 s/n, Zona Centro."
+            }
+        ]
+    },
+    {
+        "name": "Llera",
+        "locations": [
+            {
+                "title": "Unidades Generales de Investigación",
+                "address": "Calle Juárez entre Guerrero y Degollado Zona Centro CP 87200."
+            }
+        ]
+    },
+    {
+        "name": "Mante",
+        "locations": [
+            {
+                "title": "Fiscalía Mante",
+                "address": "Carretera México-Laredo Km. 6.7, Fracc. Miravalle."
+            },
+            {
+                "title": "U. E. C. S.",
+                "address": "Carretera México-Laredo Km. 6.7, Fracc. Miravalle."
+            }
+        ]
+    },
+    {
+        "name": "Matamoros",
+        "locations": [
+            {
+                "title": "Fiscalía Distrito Matamoros",
+                "address": "Av. Marte R. Gómez esquina con Ave del Niño s/n, Col. Las Torres."
+            },
+            {
+                "title": "U. E. C. S.",
+                "address": "Privada Fabricas #112 entre avenida Transformación y Boulevard Colosio Colonia Parque Industrial."
+            },
+            {
+                "title": "P. N. L. Matamoros",
+                "address": "Avenida Marte R. Gómez y Libramiento Emilio Portes Gil entre Avenida 3A. y Avenida del Niño s/n Fraccionamiento Villas las Torres C.P. 87398."
+            }
+        ]
+    },
+    {
+        "name": "Mier",
+        "locations": [
+            {
+                "title": "Unidades Generales de Investigación",
+                "address": "Calle Morelos esquina con Álvaro Obregón s/n, Zona Centro."
+            }
+        ]
+    },
+    {
+        "name": "Miguel Alemán",
+        "locations": [
+            {
+                "title": "Centro de Justicia Integral",
+                "address": "Av. Luis G. Urbina entre Ramón López y Amado Nervo #380, Col. Del Norte."
+            }
+        ]
+    },
+    {
+        "name": "Nuevo Laredo",
+        "locations": [
+            {
+                "title": "Fiscalía Distrito Nuevo Laredo",
+                "address": "Boulevard Manuel Ávila Camacho y Jaumave s/n, Colonia La Fe."
+            },
+            {
+                "title": "P. N. L. Nuevo Laredo",
+                "address": "Boulevard Manuel Ávila Camacho y Jaumave s/n segundo piso Colonia La Fe CP 88187."
+            }
+        ]
+    },
+    {
+        "name": "Ocampo",
+        "locations": [
+            {
+                "title": "Unidades Generales de Investigación",
+                "address": "Calle Francisco Sarabia esq. Con Zaragoza #301, Zona Centro."
+            }
+        ]
+    },
+    {
+        "name": "Padilla",
+        "locations": [
+            {
+                "title": "Centro de Justicia Integral",
+                "address": "Calle Benito Juárez #140, Colonia Centro."
+            },
+            {
+                "title": "Unidades Generales de Investigación",
+                "address": "Calle Benito Juárez entre 5 de Febrero y 16 de Septiembre s/n, Zona Centro."
+            }
+        ]
+    },
+    {
+        "name": "Reynosa",
+        "locations": [
+            {
+                "title": "Fiscalía Distrito Reynosa",
+                "address": "Calle Monterrey #2610, Colonia Las Fuentes."
+            },
+            {
+                "title": "U. E. C. S.",
+                "address": "Calle 16 de Septiembre #350, Colonia Hidalgo."
+            },
+            {
+                "title": "P. N. L. Reynosa",
+                "address": "Avenida Hidalgo y Monterrey s/n, Fraccionamiento Los Fresnos CP 88710."
+            }
+        ]
+    },
+    {
+        "name": "San Fernando",
+        "locations": [
+            {
+                "title": "Unidades Generales de Investigación",
+                "address": "Calle Prolongación Madero #201, Zona Centro."
+            }
+        ]
+    },
+    {
+        "name": "Tampico",
+        "locations": [
+            {
+                "title": "Unidades Generales de Investigación",
+                "address": "Avenida Hidalgo #1920, Colonia Tampico Alto."
+            }
+        ]
+    },
+    {
+        "name": "Victoria",
+        "locations": [
+            {
+                "title": "Unidades Generales de Investigación",
+                "address": "Calle 16 de Septiembre #145, Zona Centro."
+            }
+        ]
+    }
+]
