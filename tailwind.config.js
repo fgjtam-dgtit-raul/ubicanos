@@ -15,6 +15,20 @@ export default {
             fontFamily: {
                 sans: ['Figtree', ...defaultTheme.fontFamily.sans],
             },
+            gridTemplateColumns: {
+                // Simple 16 column grid
+                '16': 'repeat(16, minmax(0, 1fr))',
+        
+                // Complex site-specific column configuration
+                'map': '24rem 1fr',
+            },
+            gridTemplateRows: {
+                // Simple 16 column grid
+                '16': 'repeat(16, minmax(0, 1fr))',
+
+                // Complex site-specific column configuration
+                'map': '1fr 8rem;',
+            }
         },
     },
 
