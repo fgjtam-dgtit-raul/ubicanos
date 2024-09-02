@@ -1,0 +1,238 @@
+{
+  "offices": [
+    [
+      2.396376801520393,
+      -97.89181545209135,
+      "Fiscalía Distrito Zona Sur",
+      "Carretera de la Industria #169, Col. La Pedrera."
+    ],
+    [
+      24.058554268022,
+      -98.37594065152453,
+      "Unidades Generales de Investigación",
+      "Calle Ignacio Zaragoza s/n, Zona Centro."
+    ],
+    [
+      22.37317540832549,
+      -97.90917274662782,
+      "U. E. C. S.",
+      "Calle 14 esquina con Clavel #800, Col. Monte Alto."
+    ],
+    [
+      26.31638351758356,
+      -98.83468349715828,
+      "Unidades Generales de Investigación",
+      "Calle Agustín de Iturbide entre Dominguez y Libertad #100, Colonia Camargo."
+    ],
+    [
+      22.244270547683545,
+      -97.83966531897293,
+      "Unidades Generales de Investigación",
+      "Calle Haití entre Allende y Obregón #101, Col. 1 de Mayo."
+    ],
+    [
+      22.21967388529262,
+      -97.86246252465105,
+      "P.N.L. Zona Sur",
+      "Calle Francisco Sarabia #1309, Col. Fco. I. Madero."
+    ],
+    [
+      22.825863421158818,
+      -98.44209575464859,
+      "Unidades Generales de Investigación",
+      "Carretera Interestatal González-Zaragoza CP 89706."
+    ],
+    [
+      23.40961529045769,
+      -99.38160814926567,
+      "Unidades Generales de Investigación",
+      "Carretera Victoria-Tula Km. 112.5."
+    ],
+    [
+      23.317457,
+      -99.021138,
+      "Unidades Generales de Investigación",
+      "Calle Juárez entre Guerrero y Degollado Zona Centro CP 87200."
+    ],
+    [
+      22.701685366796738,
+      -99.01322352337027,
+      "Fiscalía Mante",
+      "Carretera Mante - Valle KM 6.7 CP89930."
+    ],
+    [
+      22.701685366796738,
+      -99.01322352337027,
+      "U. E. C. S.",
+      "Carretera Mante - Valle KM 6.9 Tecnológico Congregación Quintero ."
+    ],
+    [
+      25.82392796056337,
+      -97.50353249525143,
+      "Fiscalía Distrito Matamoros",
+      "Av. Marte R. Gómez esquina con Ave del Niño s/n, Col. Las Torres."
+    ],
+    [
+      26.430338737509867,
+      -99.1488947934893,
+      "Unidades Generales de Investigación",
+      "Calle Morelos esquina con Álvaro Obregón s/n."
+    ],
+    [
+      26.407221991901107,
+      -99.03191295622582,
+      "Centro de Justicia Integral",
+      "Av. Luis G. Urbina entre Ramón López y Amado Nervo #380, Col. Del Norte."
+    ],
+    [
+      27.476482696026103,
+      -99.54553455846624,
+      "Fiscalía Distrito Nuevo Laredo",
+      "Boulevard Manuel Ávila Camacho y Jaumave s/n, Colonia La Fe."
+    ],
+    [
+      25.87852348678573,
+      -97.58285087820424,
+      "U. E. C. S.",
+      "Privada Fabricas #112 entre avenida Transformación y Boulevard Colosio Colonia Parque Industrial."
+    ],
+    [
+      22.843554087611317,
+      -99.33328715335325,
+      "Unidades Generales de Investigación",
+      "Calle Francisco Sarabia esquina con Zaragoza Zona Centro."
+    ],
+    [
+      24.045040409540125,
+      -98.89926859684677,
+      "Centro de Justicia Integral",
+      "Calle San Pedro entre Río Guayalejo y Calle 4 s/n, Zona Centro."
+    ],
+    [
+      24.05084203950502,
+      -98.89921625159388,
+      "Policia Investigadora",
+      "Calle Melchor Ocampo esquina con Calle 3 s/n, Zona Centro."
+    ],
+    [
+      26.078750575193595,
+      -98.2897374727244,
+      "Fiscalía Distrito Reynosa",
+      "Calle Pemex Oriente entre Punta Calabozo y Punta Pescadores #111, Fracc. Puerta del Sol."
+    ],
+    [
+      26.04968727806772,
+      -98.35349287381574,
+      "U. E. C. S.",
+      "Libramiento Monterrey-Matamoros Km. 2, s/n, Col. Lomas del Real de Jarachinas Norte."
+    ],
+    [
+      26.07871552387986,
+      -98.28976532259748,
+      "P. N. L.  Reynosa",
+      "Calle Zacatecas entre Monterrey y Saltilllo #260, Piso 1, Col. Rodríguez."
+    ],
+    [
+      25.99403333188641,
+      -98.122890405698,
+      "Centro de Justicia Integral",
+      "Carretera a Matamoros Brecha 109 s/n, Col. CONALEP."
+    ],
+    [
+      24.581434494784432,
+      -98.94277933095715,
+      "Unidades Generales de Investigación",
+      "Callejón Dr. Martínez entre Morelos y Zaragoza s/n, Zona Centro."
+    ],
+    [
+      24.838904212701756,
+      -98.12613058341886,
+      "Centro de Justicia Integral",
+      "Carretera San Fernando y Campo Pesquero Carboneras #3304, San Fernando."
+    ],
+    [
+      24.84264141051986,
+      -98.14451824500587,
+      "Servicios Periciales San Fernando",
+      "Calle Mariano Abasolo, Edificio Policía Ministerial s/n, Col. Bellavista Norte."
+    ],
+    [
+      23.766124767275794,
+      -98.20000623520662,
+      "Centro de Justicia Integral",
+      "Av. Enrique Cárdenas González s/n, Col. Juventud Revolucionaria."
+    ],
+    [
+      22.219444378981482,
+      -97.86235976275262,
+      "Fiscalía Distrito Zona Sur",
+      "Calle Altamira esq. Alfredo E. Gochicoa #611, Zona Centro."
+    ],
+    [
+      22.99095587613122,
+      -99.73062272222819,
+      "Unidades Generales de Investigación",
+      "Calle Emiliano Zapata entre Carrera Torres y Priv. Sin Nombre s/n, Col. Barrio del Jicote."
+    ],
+    [
+      25.678261262400316,
+      -97.81779806751386,
+      "Unidades Generales de Investigación",
+      "Calle Ignacio Manuel Altamirano #1881 exterior, Col. Eduardo Chávez."
+    ],
+    [
+      23.763892781575088,
+      -99.11419870269906,
+      "Fiscalía General de Justicia del Estado",
+      "Blvd. José Sulaiman Chagnon con Lib. Naciones Unidas s/n, Col. Mariano Matamoros."
+    ],
+    [
+      23.736885020249773,
+      -99.12935886668437,
+      "F. E. C. C.",
+      "Calle 21 de Marzo esquina con Boulevard Fidel Velázquez s/n, Colonia Benito Juárez."
+    ],
+    [
+      23.718296989594712,
+      -99.16568497386433,
+      "F. E. N. N. A. M.",
+      "Priv. Río Bravo entre Camino Real a Tula y Calzada Luis Caballero #200, Col. Tamatán."
+    ],
+    [
+      24.045040409540125,
+      -98.89926859684677,
+      "Centro de Justicia Integral",
+      "Calle San Pedro entre Río Guayalejo y Calle 4 s/n, Zona Centro."
+    ],
+    [
+      23.74944072581548,
+      -99.13885243381536,
+      "P. N. L. Victoria",
+      "Blvd. Fidel Velazquez esquina con Flores Magón s/n, Interior Depto. A, Col. Doctores."
+    ],
+    [
+      23.737285616453622,
+      -99.1281122147706,
+      "U. E. C. S.",
+      "Calle 16 de Septiembre esq. con J. Ma. Iglesias s/n, Col. Benito Juárez."
+    ],
+    [
+      22.993588970622707,
+      -98.94371246466139,
+      "Unidades Generales de Investigación",
+      "Calle Lázaro Picasso entre Morelos y Zaragoza #113, Zona Centro."
+    ],
+    [
+      27.476667326223588,
+      -99.5454909736511,
+      "P. N. L. Nuevo Laredo",
+      "Boulevard Manuel Ávila Camacho y Jaumave s/n segundo piso Colonia La Fe CP 88187."
+    ],
+    [
+      25.82385676734391,
+      -97.50214924636214,
+      "P. N. L. Matamoros",
+      "Avenida Marte R. Gómez y Libramiento Emilio Portes Gil entre Avenida 3A. y Avenida del Niño s/n Fraccionamiento Villas las Torres C.P. 87398."
+    ]
+  ]
+}
