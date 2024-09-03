@@ -5,6 +5,7 @@ import L from "leaflet";
 
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 import ListElement from './ListElement.vue';
+import CloseIcon from '@/Components/Icons/CloseIcon.vue';
 
 const props = defineProps({
     title: String,
@@ -24,7 +25,7 @@ const markers = ref([]);
 
 const bounds = ref({});
 
-const municipalitySelected = ref(null);
+const dataSelected = ref(null);
 
 onMounted(()=>{
     initializeMap();
@@ -37,10 +38,10 @@ function initializeMap() {
         center: L.latLng( props.centerMap[0], props.centerMap[1]),
         zoom: 8,
         dragging: true,
-        scrollWheelZoom: true,
-        touchZoom: true,
-        zoomControl: true,
-        doubleClickZoom: true
+        scrollWheelZoom: false,
+        touchZoom: false,
+        zoomControl: false,
+        doubleClickZoom: false
     });
 
     // * center the view based on the bound
@@ -85,7 +86,9 @@ function drawGeometries(){
 function handlePoligonOnClick(e){
     const municipalityData = e.target.data;
     moveMap(e.latlng, 9.5)
-    municipalitySelected.value = municipalityData;
+    dataSelected.value = {
+        "Municipio" : municipalityData.NOM_MUN
+    };
 }
 
 function moveMap(latlng, zoom){
@@ -102,7 +105,7 @@ function resetMapPosition(e){
     map.value.flyToBounds(bounds.value, {
         duration: .5
     });
-    municipalitySelected.value = null;
+    dataSelected.value = null;
 
     // * display all the layers
     setTimeout(() => {
@@ -164,7 +167,9 @@ function handleMunicipalityListItem(municipality){
         }, 1000);
 
         // * save the selected municipality
-        municipalitySelected.value = polygon[0].data;
+        dataSelected.value = {
+            "Municipio" : municipality.name
+        };
 
     } catch (error) {
         resetMapPosition(null);
@@ -192,7 +197,11 @@ function handleMunicipalityListItemLocation(municipality, location){
         }, 1000);
 
         // * save the selected municipality
-        municipalitySelected.value = municipality;
+        dataSelected.value = {
+            "Municipio" : municipality.name,
+            "Oficina" : location.name,
+            "Direccion" : location.address,
+        };
 
     } catch (error) {
         resetMapPosition(null);
@@ -220,20 +229,25 @@ function handleMunicipalityListItemLocation(municipality, location){
                 </ul>
             </div>
 
-            <div class="h-full outline outline-1 outline-gray-200 rounded-lg bg-emerald-100 overflow-clip" :class="[municipalitySelected ?'row-span-1' :'row-span-2']">
-                <div id="map" class="w-full h-full" />
-            </div>
+            <div class=" flex flex-col items-center h-full outline outline-1 outline-gray-200 rounded-lg bg-emerald-100 overflow-clip row-span-2">
 
-            <div v-if="municipalitySelected" class="outline outline-1 opacity-50 outline-gray-200 rounded-lg bg-blue-100 flex flex-col">
-                <div class="flex">
-                    <svg v-on:click="resetMapPosition" fill="currentColor" aria-hidden="true" data-prefix="fas" data-icon="times" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 352 512" class="cursor-pointer hover:text-gray-900 hover:bg-white ml-auto w-5 h-5 p-1 svg-inline--fa fa-times fa-w-11 fa-7x"><path fill="currentColor" d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z" class=""></path></svg>
-                </div>
-                <div class="w-full h-full overflow-auto">
-                    <div v-for="key in Object.keys(municipalitySelected)" class="flex gap-2 border-b border-gray-400">
-                        <div>{{ key }}</div>
-                        <div>{{ municipalitySelected[key] }}</div>
+                <div v-if="dataSelected" class="absolute flex items-center justify-center">
+                    <div class="p-2 shadow-lg outline outline-1 min-w-[32rem] outline-gray-200 rounded-lg opacity-90 bg-gray-100 flex flex-col z-[990]">
+                        <div class="flex">
+                            <button v-on:click="resetMapPosition" class="cursor-pointer text-gray-500 rounded-2xl hover:bg-white ml-auto">
+                                <CloseIcon class="w-5 h-5 p-1"/>
+                            </button>
+                        </div>
+                        <div class="w-full h-full overflow-auto flex flex-col gap-1 items-center">
+                            <div class="text-gray-800 text-xl uppercase">{{ dataSelected.Municipio }}</div>
+                            <div class="text-gray-800 text-sm uppercase">{{ dataSelected.Oficina }}</div>
+                            <div class="text-gray-800 text-xs uppercase">{{ dataSelected.Direccion }}</div>
+                        </div>
                     </div>
                 </div>
+
+                <div id="map" class="w-full h-full" />
+
             </div>
             
         </div>

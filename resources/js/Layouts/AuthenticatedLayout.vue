@@ -137,7 +137,7 @@ const showingNavigationDropdown = ref(false);
             <div class="mx-auto gap-4 flex items-center justify-center">
                 <img src="/images/logo_vertical.png" class="h-12" />
                 
-                <div class="mx-auto text-xs space-y-0">
+                <div class="mx-auto text-xs space-y-0 overflow-clip">
                     <div>Fiscalía General de Justicia del Estado de Tamaulipas</div>
                     <div>Av. José Sulaimán Chagnón #641, entronque con Libramiento Naciones Unidas C.P. 87039, Ciudad Victoria, Tamaulipas, México.</div>
                     <div>Línea de atención: 834 318 5120</div>
