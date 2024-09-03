@@ -9,21 +9,25 @@ use Jenssegers\Agent\Agent;
 
 class MapController extends Controller
 {
-    public function index(){
+    public function index(Request $request){
+
+        // $cookieValue = $request->cookie("__fgjtam.auth.session-token");
+        // dd( $cookieValue);
+        // dd( $request->cookie() );
 
         // * set center of the map
         $centerMap = array(24.853449, -98.827877);
-        
 
         // * get municipalities data
         $municipalities = \App\Models\Municipality::all();
 
-        // * load municipalities polygons
+        // * load municipalities polygons and append the center propertie
         $municipalitiesGeom = $this->loadMunicipalitiesPolygons();
+        foreach ($municipalitiesGeom as &$value) {
+            $value['center'] = $this->calculateCenter($value['geometry']);
+        }
+        unset($value);
 
-        // * load officess locations
-        $officesLocations = $this->loadOfficesLocations();
-        
         // * return view based on movil or desktop
         $agent = new Agent();
         if ($agent->isMobile()) {
@@ -33,8 +37,7 @@ class MapController extends Controller
                 "title" => "Hola mundo",
                 "centerMap" => $centerMap,
                 "municipalities" => $municipalities,
-                "municipalitiesGeom" => $municipalitiesGeom,
-                "officesLocations" => $officesLocations
+                "municipalitiesGeom" => $municipalitiesGeom
             ]);
 
         } else {
@@ -44,8 +47,7 @@ class MapController extends Controller
                 "title" => "Hola mundo",
                 "centerMap" => $centerMap,
                 "municipalities" => $municipalities,
-                "municipalitiesGeom" => $municipalitiesGeom,
-                "officesLocations" => $officesLocations
+                "municipalitiesGeom" => $municipalitiesGeom
             ]);
         }
 
@@ -77,17 +79,20 @@ class MapController extends Controller
 
         return $municipalitiesPolygons;
     }
+
+    function calculateCenter($coordinates) {
+        $latSum = 0;
+        $lonSum = 0;
     
-    /**
-     * loadOfficesLocations
-     *
-     * @return array
-     */
-    private function loadOfficesLocations(){
-        // * load file
-        $contents = File::get('offices.json');
-        $officessData = json_decode(json: $contents, associative: true)["offices"];
-        return $officessData;
+        foreach ($coordinates as $coord) {
+            $latSum += $coord[0];
+            $lonSum += $coord[1];
+        }
+
+        $center = [$latSum / count($coordinates), $lonSum / count($coordinates)];
+
+        return $center;
     }
+
 
 }

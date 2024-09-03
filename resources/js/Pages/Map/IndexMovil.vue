@@ -4,6 +4,7 @@ import { Head } from '@inertiajs/vue3';
 import L from "leaflet";
 
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import ListElement from './ListElement.vue';
 
 const props = defineProps({
     title: String,
@@ -12,53 +13,54 @@ const props = defineProps({
         default: [23.739622, -99.147968]
     },
     municipalities: Array,
-    municipalitiesGeom: Object,
-    officesLocations: Array,
+    municipalitiesGeom: Object
 });
 
 const map = ref({});
 
 const polygons = ref([]);
 
+const markers = ref([]);
+
 const bounds = ref({});
 
 const municipalitySelected = ref(null);
 
 onMounted(()=>{
-    
-    // var map = L.map('map').setView([51.505, -0.09], 13);
-
     initializeMap();
-
 })
 
 function initializeMap() {
     
-    // * laod map
-    document.map = L.map('map', {
+    // * load map
+    map.value = L.map('map', {
         center: L.latLng( props.centerMap[0], props.centerMap[1]),
         zoom: 8,
-        dragging: false,
-        scrollWheelZoom: false,
-        touchZoom: false,
-        zoomControl: false,
-        doubleClickZoom: false
+        dragging: true,
+        scrollWheelZoom: true,
+        touchZoom: true,
+        zoomControl: true,
+        doubleClickZoom: true
     });
 
     // * center the view based on the bound
     var corner1 = L.latLng(28.115100, -100.261120), corner2 = L.latLng(22.143872, -97.082750);
     bounds.value = L.latLngBounds(corner1, corner2);
-    document.map.fitBounds(bounds.value)
+    map.value.fitBounds(bounds.value)
 
     // * draw the map
     L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
         attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
         opacity:.5,
-    }).addTo(document.map);
+    }).addTo(map.value);
 
     drawGeometries();
 
-    drawPushpins();
+    // * get array of markers
+    const locations = props.municipalities.reduce((acc, element) => {
+        return acc.concat(element.locations);
+    }, []);
+    drawMarkers(locations);
 
 }
 
@@ -70,27 +72,25 @@ function drawGeometries(){
             opacity: .5,
             fill: true,
             fillColor: "#2A3B67",
-            fillOpacity: .15
-        }).addTo(document.map);
+            fillOpacity: .05
+        }).addTo(map.value);
         polygon.data = element.properties;
-        polygon.on('click', handlePoligonClick);
+        polygon.on('click', handlePoligonOnClick);
 
-        // save the ref of the polygon
+        // * save the ref of the polygon
         polygons.value.push(polygon);
-
     });
 }
 
-function handlePoligonClick(e){
+function handlePoligonOnClick(e){
     const municipalityData = e.target.data;
     moveMap(e.latlng, 9.5)
-
     municipalitySelected.value = municipalityData;
 }
 
 function moveMap(latlng, zoom){
-    document.map.flyTo(latlng, zoom,{
-        duration: .5
+    map.value.flyTo(latlng, zoom, {
+        duration: 1
     });
 }
 
@@ -98,61 +98,105 @@ function resetMapPosition(e){
     if(e){
         e.stopPropagation();
     }
-    document.map.flyToBounds(bounds.value,{
+
+    map.value.flyToBounds(bounds.value, {
         duration: .5
     });
-
     municipalitySelected.value = null;
+
+    // * display all the layers
+    setTimeout(() => {
+            const locations = props.municipalities.reduce((acc, element) => {
+                return acc.concat(element.locations);
+            }, []);
+            drawMarkers(locations);
+        }, 750);
+
 }
 
-function drawPushpins(){
-    props.officesLocations.forEach(element => {
-        var pushpin = L.marker( L.latLng(element[0], element[1]),{
-            icon: L.icon({
-                iconUrl: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
-                iconSize: [24, 24]
-            })
-        })
-            .addTo(document.map)
-            .bindPopup( element[3]);
+function drawMarkers(locations){
+    // * clear the markers
+    markers.value.forEach(layer => layer.remove());
+    markers.value = [];
 
-        pushpin.on('click', handlePushpinOnClick);
-        
+    // draw the new layers
+    locations.forEach(location => {
+        if( location.geolocation && location.geolocation.length == 2){
+
+            var marker = L.marker( L.latLng( location.geolocation[0], location.geolocation[1]),{
+                title: location.name,
+                icon: L.icon({
+                    iconUrl: 'https://maps.google.com/mapfiles/ms/icons/blue-dot.png',
+                    iconSize: [24, 24]
+                }),
+                opacity: .75,
+                riseOnHover: true
+            })
+            .addTo(map.value)
+            .bindPopup( location.address);
+
+            marker.on('click', handleMarkerOnClick);
+
+            // * save the marker
+            markers.value.push(marker);
+        }
     });
 }
 
-function handlePushpinOnClick(e){
-    //console.dir(e.target._latlng);
+function handleMarkerOnClick(e){
     moveMap(e.target._latlng, 16.5);
 }
 
 function handleMunicipalityListItem(municipality){
-    const municipalityName = municipality.name;
-    const polygon = polygons.value.filter( item => item.data.NOM_MUN == municipalityName);
+
+    const polygon = polygons.value.filter( item => item.data.NOM_MUN == municipality.name);
+
     try {
+
+        // * get the center of the municipality selected and moved to it
         const munyGeo = props.municipalitiesGeom.filter(item => item.properties.CVE_MUN == polygon[0].data.CVE_MUN);
-        const center = calculateCenter(munyGeo[0].geometry);
+        const center = munyGeo[0].center;
         moveMap(center, 9.5);
 
-        // save the selected municipality
+        // * display only the markes of the current municipalitie
+        setTimeout(() => {
+            drawMarkers(municipality.locations);
+        }, 1000);
+
+        // * save the selected municipality
         municipalitySelected.value = polygon[0].data;
+
     } catch (error) {
         resetMapPosition(null);
     }
 }
 
-function calculateCenter(coordinates){
-    var latSum = 0;
-    var lonSum = 0;
+function handleMunicipalityListItemLocation(municipality, location){
 
-    coordinates.forEach(coord => {
-        latSum += coord[0];
-        lonSum += coord[1];
-    });
+    try {
 
-    const center = [latSum / coordinates.length, lonSum / coordinates.length];
+        // * move map
+        moveMap(location.geolocation, 16.5);
 
-    return center;
+        // * display only the markes of the current municipalitie
+        setTimeout(() => {
+            // * draw new markers
+            drawMarkers(municipality.locations);
+
+            // * show popup of the marker
+            const marker = markers.value.find(m=>m.options.title == location.name);
+            if(marker){
+                marker.openPopup();
+            }
+
+        }, 1000);
+
+        // * save the selected municipality
+        municipalitySelected.value = municipality;
+
+    } catch (error) {
+        resetMapPosition(null);
+    }
 }
 
 </script>
@@ -184,17 +228,12 @@ function calculateCenter(coordinates){
 
             <div class="w-full h-[16rem] outline outline-1 outline-gray-200 bg-white overflow-y-auto row-span-2 select-none">
                 <ul class="h-full">
-                    <li v-for="m in municipalities" v-on:click="handleMunicipalityListItem(m)" class="border-b p-1 rounded-b-lg hover:bg-gray-100">
-                        <h2 class="uppercase py-0.5 text-sm font-semibold sticky top-0 bg-inherit cursor-pointer">{{m.name}}</h2>
-                        <ul class="mt-2 space-y-2">
-                            <li v-for="l in m.locations">
-                                <p class="text-sm text-gray-600 hover:underline cursor-pointer flex items-center">
-                                    <svg fill="currentColor" class="h-3 mx-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><path d="M288 32c-80.8 0-145.5 36.8-192.6 80.6C48.6 156 17.3 208 2.5 243.7c-3.3 7.9-3.3 16.7 0 24.6C17.3 304 48.6 356 95.4 399.4C142.5 443.2 207.2 480 288 480s145.5-36.8 192.6-80.6c46.8-43.5 78.1-95.4 93-131.1c3.3-7.9 3.3-16.7 0-24.6c-14.9-35.7-46.2-87.7-93-131.1C433.5 68.8 368.8 32 288 32zM432 256c0 79.5-64.5 144-144 144s-144-64.5-144-144s64.5-144 144-144s144 64.5 144 144zM288 192c0 35.3-28.7 64-64 64c-11.5 0-22.3-3-31.6-8.4c-.2 2.8-.4 5.5-.4 8.4c0 53 43 96 96 96s96-43 96-96s-43-96-96-96c-2.8 0-5.6 .1-8.4 .4c5.3 9.3 8.4 20.1 8.4 31.6z"/></svg>
-                                    <div>{{ l.title }}</div>
-                                </p>
-                            </li>
-                        </ul>
-                    </li>
+                    <ListElement v-for="m in municipalities"
+                        :key="m.cvegeo"
+                        :municipality="m"
+                        v-on:municipalityClick="handleMunicipalityListItem"
+                        v-on:locationClick="handleMunicipalityListItemLocation"
+                    />
                 </ul>
             </div>
 
