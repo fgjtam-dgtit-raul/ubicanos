@@ -13,6 +13,9 @@ class Municipality extends Model
 
     protected $fillable = [
         "name",
+        "offices",
+        "cvegeo",
+        "cve_mun",
         "locations"
     ];
 

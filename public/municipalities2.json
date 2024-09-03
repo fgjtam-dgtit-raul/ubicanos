@@ -1,0 +1,357 @@
+[
+    {
+        "name": "Abasolo",
+        "cvegeo": "28001",
+        "cve_mun": "001",
+        "locations": [
+            {
+                "name": "Unidades Generales de Investigación",
+                "address": "Calle Ignacio Zaragoza s/n, Zona Centro.",
+                "geolocation": [24.058554268022, -98.37594065152453]
+            }
+        ]
+    },
+    {
+        "name": "Altamira",
+        "cvegeo": "28003",
+        "cve_mun": "003",
+        "locations": [
+            {
+                "name": "Fiscalía Distrito Zona Sur",
+                "address": "Carretera de la Industria #169, Col. La Pedrera.",
+                "geolocation": [2.396376801520393, -97.89181545209135]
+            },
+            {
+                "name": "U. E. C. S.",
+                "address": "Calle 14 esquina con Clavel #800, Col. Monte Alto.",
+                "geolocation": [22.37317540832549, -97.90917274662782]
+            }
+        ]
+    },
+    {
+        "name": "Camargo",
+        "cvegeo": "28007",
+        "cve_mun": "007",
+        "locations": [
+            {
+                "name": "Unidades Generales de Investigación",
+                "address": "Calle Agustín de Iturbide entre Dominguez y Libertad #100, Colonia Camargo.",
+                "geolocation": [26.31638351758356, -98.83468349715828]
+            }
+        ]
+    },
+    {
+        "name": "Ciudad Madero",
+        "cvegeo": "28009",
+        "cve_mun": "009",
+        "locations": [
+            {
+                "name": "Unidades Generales de Investigación",
+                "address": "Calle Haití entre Allende y Obregón #101, Col. 1 de Mayo.",
+                "geolocation": [22.244270547683545, -97.83966531897293]
+            }
+        ]
+    },
+    {
+        "name": "Gonzalez",
+        "cvegeo": "28012",
+        "cve_mun": "012",
+        "locations": [
+            {
+                "name": "Unidades Generales de Investigación",
+                "address": "Carretera Interestatal González-Zaragoza CP 89706.",
+                "geolocation": [22.825863421158818, -98.44209575464859]
+            }
+        ]
+    },
+    {
+        "name": "Jaumave",
+        "cvegeo": "28017",
+        "cve_mun": "017",
+        "locations": [
+            {
+                "name": "Unidades Generales de Investigación",
+                "address": "Carretera Victoria-Tula Km. 112.5.",
+                "geolocation": [23.40961529045769, -99.38160814926567]
+            }
+        ]
+    },
+    {
+        "name": "Jiménez",
+        "cvegeo": "28018",
+        "cve_mun": "018",
+        "locations": [
+            {
+                "name": "Unidades Generales de Investigación",
+                "address": "Calle San Pedro entre Río Guayalejo y Calle 4 s/n, Zona Centro.",
+                "geolocation": [24.045040409540125, -98.89926859684677]
+            }
+        ]
+    },
+    {
+        "name": "Llera",
+        "cvegeo": "28019",
+        "cve_mun": "019",
+        "locations": [
+            {
+                "name": "Unidades Generales de Investigación",
+                "address": "Calle Juárez entre Guerrero y Degollado Zona Centro CP 87200.",
+                "geolocation": [23.317457, -99.021138]
+            }
+        ]
+    },
+    {
+        "name": "Mante",
+        "cvegeo": "28021",
+        "cve_mun": "021",
+        "locations": [
+            {
+                "name": "Fiscalía Mante",
+                "address": "Carretera México-Laredo Km. 6.7, Fracc. Miravalle.",
+                "geolocation": [22.701685366796738, -99.01322352337027]
+            },
+            {
+                "name": "U. E. C. S.",
+                "address": "Carretera Mante - Valle KM 6.9 Tecnológico Congregación Quintero .",
+                "geolocation": [22.701685366796738, -99.01322352337027]
+            }
+        ]
+    },
+    {
+        "name": "Matamoros",
+        "cvegeo": "28022",
+        "cve_mun": "022",
+        "locations": [
+            {
+                "name": "Fiscalía Distrito Matamoros",
+                "address": "Av. Marte R. Gómez esquina con Ave del Niño s/n, Col. Las Torres.",
+                "geolocation": [25.82392796056337, -97.50353249525143]
+            },
+            {
+                "name": "U. E. C. S.",
+                "address": "Privada Fabricas #112 entre avenida Transformación y Boulevard Colosio Colonia Parque Industrial.",
+                "geolocation": [25.87852348678573, -97.58285087820424]
+            },
+            {
+                "name": "P. N. L. Matamoros",
+                "address": "Avenida Marte R. Gómez y Libramiento Emilio Portes Gil entre Avenida 3A. y Avenida del Niño s/n Fraccionamiento Villas las Torres C.P. 87398.",
+                "geolocation": [25.82385676734391, -97.50214924636214]
+            }
+        ]
+    },
+    {
+        "name": "Mier",
+        "cvegeo": "28024",
+        "cve_mun": "024",
+        "locations": [
+            {
+                "name": "Unidades Generales de Investigación",
+                "address": "Calle Morelos esquina con Álvaro Obregón s/n, Zona Centro.",
+                "geolocation": [26.430338737509867, -99.1488947934893]
+            }
+        ]
+    },
+    {
+        "name": "Miguel Alemán",
+        "cvegeo": "28025",
+        "cve_mun": "025",
+        "locations": [
+            {
+                "name": "Centro de Justicia Integral",
+                "address": "Av. Luis G. Urbina entre Ramón López y Amado Nervo #380, Col. Del Norte.",
+                "geolocation": [26.407221991901107, -99.03191295622582]
+            }
+        ]
+    },
+    {
+        "name": "Nuevo Laredo",
+        "cvegeo": "28027",
+        "cve_mun": "027",
+        "locations": [
+            {
+                "name": "Fiscalía Distrito Nuevo Laredo",
+                "address": "Boulevard Manuel Ávila Camacho y Jaumave s/n, Colonia La Fe.",
+                "geolocation": [27.476482696026103, -99.54553455846624]
+            },
+            {
+                "name": "P. N. L. Nuevo Laredo",
+                "address": "Boulevard Manuel Ávila Camacho y Jaumave s/n segundo piso Colonia La Fe CP 88187.",
+                "geolocation": [27.476667326223588, -99.5454909736511]
+            }
+        ]
+    },
+    {
+        "name": "Ocampo",
+        "cvegeo": "28029",
+        "cve_mun": "029",
+        "locations": [
+            {
+                "name": "Unidades Generales de Investigación",
+                "address": "Calle Francisco Sarabia esq. Con Zaragoza #301, Zona Centro.",
+                "geolocation": [2.843554087611317, -99.33328715335325]
+            }
+        ]
+    },
+    {
+        "name": "Padilla",
+        "cvegeo": "28030",
+        "cve_mun": "030",
+        "locations": [
+            {
+                "name": "Centro de Justicia Integral",
+                "address": "Calle San Pedro entre Río Guayalejo y Calle 4 s/n, Zona Centro.",
+                "geolocation": [24.045040409540125, -98.89926859684677]
+            },
+            {
+                "name": "Policia Investigadora",
+                "address": "Calle Melchor Ocampo esquina con Calle 3 s/n, Zona Centro.",
+                "geolocation": [24.05084203950502, -98.89921625159388]
+            }
+        ]
+    },
+    {
+        "name": "Reynosa",
+        "cvegeo": "28032",
+        "cve_mun": "032",
+        "locations": [
+            {
+                "name": "Fiscalía Distrito Reynosa",
+                "address": "Calle Pemex Oriente entre Punta Calabozo y Punta Pescadores #111, Fracc. Puerta del Sol.",
+                "geolocation": [26.078750575193595, -98.2897374727244]
+            },
+            {
+                "name": "U. E. C. S.",
+                "address": "Libramiento Monterrey-Matamoros Km. 2, s/n, Col. Lomas del Real de Jarachinas Norte.",
+                "geolocation": [26.04968727806772, -98.35349287381574]
+            },
+            {
+                "name": "P. N. L. Reynosa",
+                "address": "Calle Zacatecas entre Monterrey y Saltilllo #260, Piso 1, Col. Rodríguez.",
+                "geolocation": [26.07871552387986, -98.28976532259748]
+            }
+        ]
+    },
+    {
+        "name": "Rio Bravo",
+        "cvegeo": "28033",
+        "cve_mun": "033",
+        "locations": [
+            {
+                "name": "Centro de Justicia Integral",
+                "address": "Carretera a Matamoros Brecha 109 s/n, Col. CONALEP.",
+                "geolocation": [25.99403333188641, -98.122890405698]
+            }
+        ]
+    },
+    {
+        "name": "San Carlos",
+        "cvegeo": "28034",
+        "cve_mun": "034",
+        "locations": [
+            {
+                "name": "Unidades Generales de Investigación",
+                "address": "Callejón Dr. Martínez entre Morelos y Zaragoza s/n, Zona Centro.",
+                "geolocation": [24.581434494784432, -98.94277933095715]
+            }
+        ]
+    },
+    {
+        "name": "San Fernando",
+        "cvegeo": "28035",
+        "cve_mun": "035",
+        "locations": [
+            {
+                "name": "Centro de Justicia Integral",
+                "address": "Carretera San Fernando y Campo Pesquero Carboneras #3304, San Fernando.",
+                "geolocation": [24.838904212701756, -98.12613058341886]
+            }
+        ]
+    },
+    {
+        "name": "Soto la Marina",
+        "cvegeo": "28037",
+        "cve_mun": "037",
+        "locations": [
+            {
+                "name": "Centro de Justicia Integral",
+                "address": "Av. Enrique Cárdenas González s/n, Col. Juventud Revolucionaria.",
+                "geolocation": [23.766124767275794, -98.20000623520662]
+            }
+        ]
+    },
+    {
+        "name": "Tampico",
+        "cvegeo": "28038",
+        "cve_mun": "038",
+        "locations": [
+            {
+                "name": "Fiscalía Distrito Zona Sur",
+                "address": "Calle Altamira esq. Alfredo E. Gochicoa #611, Zona Centro.",
+                "geolocation": [22.219444378981482, -97.86235976275262]
+            },
+            {
+                "name": "P.N.L. Zona Sur",
+                "address": "Calle Francisco Sarabia #1309, Col. Fco. I. Madero.",
+                "geolocation": [22.21967388529262, -97.86246252465105]
+            }
+        ]
+    },
+    {
+        "name": "Tula",
+        "cvegeo": "28039",
+        "cve_mun": "039",
+        "locations": [
+            {
+                "name": "Unidades Generales de Investigación",
+                "address": "Carretera Federal México-Laredo Km 50.1, Zona Centro.",
+                "geolocation": []
+            }
+        ]
+    },
+    {
+        "name": "Valle Hermoso",
+        "cvegeo": "28040",
+        "cve_mun": "040",
+        "locations": [
+            {
+                "name": "Centro de Justicia Integral",
+                "address": "Carretera Estatal Valle Hermoso al Empalme S/N, Zona Centro.",
+                "geolocation": []
+            }
+        ]
+    },
+    {
+        "name": "Victoria",
+        "cvegeo": "28041",
+        "cve_mun": "041",
+        "locations": [
+            {
+                "name": "Fiscalía Distrito Victoria",
+                "address": "Calle 17 entre Mier y Terán e Hidalgo #112, Zona Centro.",
+                "geolocation": []
+            },
+            {
+                "name": "U. E. C. S.",
+                "address": "Calle Juan B. Tijerina esquina con Río San Fernando #509, Col. Azteca.",
+                "geolocation": []
+            },
+            {
+                "name": "P. N. L. Victoria",
+                "address": "Calle Galeana entre 14 e 15 S/N Fraccionamiento del Bosque C.P. 87020.",
+                "geolocation": []
+            }
+        ]
+    },
+    {
+        "name": "Xicoténcatl",
+        "cvegeo": "28043",
+        "cve_mun": "043",
+        "locations": [
+            {
+                "name": "Unidades Generales de Investigación",
+                "address": "Calle Hidalgo entre Callejón de la Cruz y Juárez Zona Centro CP 89740.",
+                "geolocation": []
+            }
+        ]
+    }
+]

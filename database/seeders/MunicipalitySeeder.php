@@ -14,7 +14,7 @@ class MunicipalitySeeder extends Seeder
      */
     public function run(): void
     {
-        $filePath = public_path('municipalities.json');
+        $filePath = public_path('municipalities2.json');
         $fileData = File::get($filePath);
         $officessData = json_decode(json: $fileData, associative: true);
         
