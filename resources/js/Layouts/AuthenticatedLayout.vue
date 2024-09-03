@@ -20,7 +20,7 @@ const showingNavigationDropdown = ref(false);
                     <div class="flex">
                         <!-- Logo -->
                         <div class="shrink-0 flex items-center">
-                            <Link :href="route('dashboard')">
+                            <Link href="https://fiscaliadigital.fgjtam.gob.mx/">
                                 <img src="/images/logo.png" class="block h-12 w-auto fill-current" />
                             </Link>
                         </div>
@@ -60,7 +60,7 @@ const showingNavigationDropdown = ref(false);
                                 </template>
 
                                 <template #content>
-                                    <DropdownLink :href="route('profile.edit')"> Mi Perfil </DropdownLink>
+                                    <DropdownLink :href="route('profile.show')"> Mi Perfil </DropdownLink>
                                 </template>
                             </Dropdown>
                         </div>
@@ -114,7 +114,7 @@ const showingNavigationDropdown = ref(false);
                     </div>
 
                     <div class="mt-3 space-y-1">
-                        <ResponsiveNavLink :href="route('profile.edit')"> Mi Perfil </ResponsiveNavLink>
+                        <ResponsiveNavLink :href="route('profile.show')"> Mi Perfil </ResponsiveNavLink>
                     </div>
                 </div>
             </div>
