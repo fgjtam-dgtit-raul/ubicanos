@@ -136,7 +136,9 @@ function drawMarkers(locations){
                 riseOnHover: true
             })
             .addTo(map.value)
-            .bindPopup( location.address);
+            .bindPopup(`<b style="text-transform:uppercase;">${location.name}</b><p>${location.address}</p>
+            <a href="https://www.google.com/maps?q=${location.geolocation[0]},${location.geolocation[1]}" target="_blank" style="text-align: right; display: block;">Ver en Google Maps</a>
+            `);
 
             marker.on('click', handleMarkerOnClick);
 
@@ -232,16 +234,16 @@ function handleMunicipalityListItemLocation(municipality, location){
             <div class=" flex flex-col items-center h-full outline outline-1 outline-gray-200 rounded-lg bg-emerald-100 overflow-clip row-span-2">
 
                 <div v-if="dataSelected" class="absolute flex items-center justify-center">
-                    <div class="p-2 shadow-lg outline outline-1 min-w-[32rem] outline-gray-200 rounded-lg opacity-90 bg-gray-100 flex flex-col z-[990]">
-                        <div class="flex">
+                    <div class="p-2 shadow-lg outline outline-1 min-w-[32rem] outline-gray-200 rounded-lg opacity-90 bg-gray-100 flex flex-col items-end z-[990]">
+                        <div class="absolute flex">
                             <button v-on:click="resetMapPosition" class="cursor-pointer text-gray-500 rounded-2xl hover:bg-white ml-auto">
                                 <CloseIcon class="w-5 h-5 p-1"/>
                             </button>
                         </div>
                         <div class="w-full h-full overflow-auto flex flex-col gap-1 items-center">
                             <div class="text-gray-800 text-xl uppercase">{{ dataSelected.Municipio }}</div>
-                            <div class="text-gray-800 text-sm uppercase">{{ dataSelected.Oficina }}</div>
-                            <div class="text-gray-800 text-xs uppercase">{{ dataSelected.Direccion }}</div>
+                            <div v-if="dataSelected.Oficina" class="text-gray-800 text-sm uppercase">{{ dataSelected.Oficina }}</div>
+                            <div v-if="dataSelected.Direccion" class="text-gray-800 text-xs uppercase">{{ dataSelected.Direccion }}</div>
                         </div>
                     </div>
                 </div>

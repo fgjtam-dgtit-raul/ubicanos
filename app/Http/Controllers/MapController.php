@@ -9,11 +9,14 @@ use Jenssegers\Agent\Agent;
 
 class MapController extends Controller
 {
-    public function index(Request $request){
 
-        // $cookieValue = $request->cookie("__fgjtam.auth.session-token");
-        // dd( $cookieValue);
-        // dd( $request->cookie() );
+    /**
+     * return the view of the map
+     *
+     * @param  Request $request
+     * @return mixed
+     */
+    public function index(Request $request){
 
         // * set center of the map
         $centerMap = array(24.853449, -98.827877);
@@ -53,7 +56,7 @@ class MapController extends Controller
 
     }
 
-    
+    #region private functions
     /**
      * loadMunicipalitiesPolygons
      *
@@ -80,7 +83,7 @@ class MapController extends Controller
         return $municipalitiesPolygons;
     }
 
-    function calculateCenter($coordinates) {
+    private function calculateCenter($coordinates) {
         $latSum = 0;
         $lonSum = 0;
     
@@ -93,6 +96,6 @@ class MapController extends Controller
 
         return $center;
     }
-
+    #endregion
 
 }
