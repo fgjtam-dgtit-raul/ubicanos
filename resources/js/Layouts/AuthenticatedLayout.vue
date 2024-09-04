@@ -20,9 +20,9 @@ const showingNavigationDropdown = ref(false);
                     <div class="flex">
                         <!-- Logo -->
                         <div class="shrink-0 flex items-center">
-                            <Link href="http://fiscaliadigital.fgjtam.gob.mx/">
+                            <a href="http://fiscaliadigital.fgjtam.gob.mx/" target="_blank">
                                 <img src="/images/logo.png" class="block h-12 w-auto fill-current" />
-                            </Link>
+                            </a>
                         </div>
 
                         <!-- Navigation Links -->
@@ -60,9 +60,9 @@ const showingNavigationDropdown = ref(false);
                                 </template>
 
                                 <template #content>
-                                    <DropdownLink :href="route('profile.show')"> Mi Perfil </DropdownLink>
-                                    <DropdownLink :href="route('municipality.index')"> Editar Oficinas </DropdownLink>
+                                    <a class="block w-full px-4 py-2 text-start text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" href="https://fiscaliadigital.fgjtam.gob.mx/mi-perfil">Mi Perfil</a>
                                 </template>
+
                             </Dropdown>
                         </div>
                     </div>
@@ -115,7 +115,7 @@ const showingNavigationDropdown = ref(false);
                     </div>
 
                     <div class="mt-3 space-y-1">
-                        <ResponsiveNavLink :href="route('profile.show')"> Mi Perfil </ResponsiveNavLink>
+                        <a class="block w-full ps-3 pe-4 py-2 border-l-4 border-transparent text-start text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out" href="https://fiscaliadigital.fgjtam.gob.mx/mi-perfil"> Mi Perfil </a>
                     </div>
                 </div>
             </div>

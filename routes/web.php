@@ -15,7 +15,7 @@ Route::get('/', [HomeController::class, 'index'])->named("home");
 
 Route::middleware('auth')->group(function () {
     Route::get('/map', [MapController::class, 'index'])->name('map');
-    Route::get('/profile', [HomeController::class, 'showProfile'])->name('profile.show');
+    Route::get('/fiscalia-digital', [HomeController::class, 'redirectFiscaliaDigital'])->name('fiscalia-digital');
 
     Route::prefix('municipality')->name('municipality.')->group(function(){
         Route::get('', [MunicipalityController::class, 'index'])->name('index');

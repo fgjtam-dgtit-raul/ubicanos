@@ -5,8 +5,9 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Auth;
-use App\Services\AuthApiService;
+use Inertia\Inertia;
 
+use App\Services\AuthApiService;
 use App\Models\User;
 
 class HomeController extends Controller
@@ -34,13 +35,11 @@ class HomeController extends Controller
         }
 
         if( !isset($sessionToken)){
-            Log::notice("Session cookie its not presented, making a new one.");
-            return response()->json([
-                "message" => "Session token not valid."
-            ], 403);
+            Log::notice("Session cookie it's not presented.");
+            return redirect()->route('fiscalia-digital');
         }
 
-        // * retrive the user by the cookie
+        // * retrive the user by from the AuthAPI
         $userResponse = array();
         try {
             $userResponse = $this->authApiService->getUserInfo($sessionToken);
@@ -49,9 +48,7 @@ class HomeController extends Controller
                 "message" => $th->getMessage(),
                 "sessionToken" => $sessionToken
             ]);
-            return response()->json([
-                "message" => "Session token not valid."
-            ], 403);
+            return redirect()->route('fiscalia-digital');
         }
 
         // * retrive the user
@@ -69,8 +66,9 @@ class HomeController extends Controller
 
     }
 
-    function showProfile() {
-        return redirect("https://fiscaliadigital.fgjtam.gob.mx/mi-perfil");
+    function redirectFiscaliaDigital(Request $request){
+        return Inertia::render('Redirect', [
+        ]);
     }
 
 }
