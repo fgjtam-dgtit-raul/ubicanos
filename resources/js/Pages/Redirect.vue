@@ -3,13 +3,13 @@ import {onMounted} from 'vue';
 import { Head } from '@inertiajs/vue3';
 
 import Card from '@/Components/Card.vue';
-import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
+import GuestLayout from '@/Layouts/GuestLayout.vue';
 import AnimateSpin from '@/Components/Icons/AnimateSpin.vue';
 
 onMounted(()=>{
     setTimeout(()=>{
         window.location.href = "https://fiscaliadigital.fgjtam.gob.mx/mi-perfil";
-    },1000);
+    },500);
 });
 
 </script>
@@ -17,7 +17,7 @@ onMounted(()=>{
 <template>
     <Head title="Dashboard" />
 
-    <AuthenticatedLayout>
+    <GuestLayout>
         <div class="h-full bg-gradient-to-bl from-[#374151] to-[#1b2341] overflow-y-clip flex text-white ">
             
             <div class="flex items-center w-full">
@@ -30,5 +30,5 @@ onMounted(()=>{
             </div>
 
         </div>
-    </AuthenticatedLayout>
+    </GuestLayout>
 </template>
