@@ -89,6 +89,7 @@ function handlePoligonOnClick(e){
     dataSelected.value = {
         "Municipio" : municipalityData.NOM_MUN
     };
+    scrollElementIntoView(municipalityData.CVEGEO);
 }
 
 function moveMap(latlng, zoom){
@@ -210,8 +211,12 @@ function handleMunicipalityListItemLocation(municipality, location){
     }
 }
 
+function scrollElementIntoView(cvegeo){
+    try {
+        document.getElementById(cvegeo).scrollIntoView();
+    } catch (error) { }
+}
 </script>
-
 
 <template>
 

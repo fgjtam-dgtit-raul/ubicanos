@@ -4,7 +4,7 @@ import { Head } from '@inertiajs/vue3';
 import L from "leaflet";
 
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
-import ListElement from './ListElement.vue';
+import ListElement from './ListElementMovil.vue';
 import CloseIcon from '@/Components/Icons/CloseIcon.vue';
 
 const props = defineProps({
@@ -89,6 +89,7 @@ function handlePoligonOnClick(e){
     dataSelected.value = {
         "Municipio" : municipalityData.NOM_MUN
     };
+    scrollElementIntoView(municipalityData.CVEGEO);
 }
 
 function moveMap(latlng, zoom){
@@ -210,6 +211,11 @@ function handleMunicipalityListItemLocation(municipality, location){
     }
 }
 
+function scrollElementIntoView(cvegeo){
+    try {
+        document.getElementById(cvegeo).scrollIntoView();
+    } catch (error) { }
+}
 </script>
 
 <template>
@@ -242,8 +248,8 @@ function handleMunicipalityListItemLocation(municipality, location){
                         </div>
                         <div class="w-full h-full overflow-auto flex flex-col gap-1 items-center">
                             <div class="text-gray-800 text-xl uppercase">{{ dataSelected.Municipio }}</div>
-                            <div v-if="dataSelected.Oficina" class="text-gray-800 text-sm uppercase">{{ dataSelected.Oficina }}</div>
-                            <div v-if="dataSelected.Direccion" class="text-gray-800 text-xs uppercase">{{ dataSelected.Direccion }}</div>
+                            <div class="text-gray-800 text-sm uppercase">{{ dataSelected.Oficina }}</div>
+                            <div class="text-gray-800 text-xs uppercase">{{ dataSelected.Direccion }}</div>
                         </div>
                     </div>
                 </div>
