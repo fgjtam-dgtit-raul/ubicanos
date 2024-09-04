@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue';
+import { ref, computed } from 'vue';
 import { Head, useForm } from '@inertiajs/vue3';
 import { formatDatetime } from '@/utils/date.js';
 
@@ -23,12 +23,28 @@ const breadcrumbs = ref([
     { "name": "Oficinas", "href": '' }
 ]);
 
-function handleInputSearch(params) {
+const searchtext = ref("");
+
+const municipalitiesData = computed(()=>{
+    if( searchtext.value === null || searchtext.value === '' ){
+        return props.municipalities;
+    }
+
+    const searchTextLower = searchtext.value.toLowerCase();
+    return props.municipalities.filter(item =>
+        item.name.toLowerCase().includes(searchTextLower) ||
+        item.cvegeo.toLowerCase().includes(searchTextLower)
+    );
+});
+
+function handleInputSearch(text) {
     loading.value = true;
+    searchtext.value = text;
     setTimeout(() => {
         loading.value = false;
-    }, 1000);
+    }, 500);
 }
+
 
 </script>
 
@@ -72,7 +88,7 @@ function handleInputSearch(params) {
                 </thead>
                 <tbody id="table-body" class="bg-white dark:bg-gray-800 dark:border-gray-500">
                     <template v-if="municipalities && municipalities.length > 0">
-                        <tr v-for="mun in municipalities" class="border-b">
+                        <tr v-for="mun in municipalitiesData" class="border-b">
 
                             <td class="p-2 text-center">
                                 {{ mun.name }}
