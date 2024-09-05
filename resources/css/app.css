@@ -83,3 +83,7 @@ footer .footer-link:hover {
         grid-template-columns: 1fr;
     }
 }
+
+.custom-grid {
+    grid-template-columns: 1fr 50rem;
+}

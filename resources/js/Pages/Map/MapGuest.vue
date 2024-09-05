@@ -4,7 +4,6 @@ import { Head } from '@inertiajs/vue3';
 import L from "leaflet";
 
 import GuestLayout from '@/Layouts/GuestLayout.vue';
-
 import ListElement from './ListElementMovil.vue';
 import CloseIcon from '@/Components/Icons/CloseIcon.vue';
 
@@ -33,7 +32,6 @@ onMounted(()=>{
 })
 
 function initializeMap() {
-    
     // * load map
     map.value = L.map('map', {
         center: L.latLng( props.centerMap[0], props.centerMap[1]),
@@ -224,40 +222,35 @@ function scrollElementIntoView(cvegeo){
     <Head title="Ubicacion oficinas" />
     
     <GuestLayout>
-        <div class="max-w-screen-2xl h-height gap-1 grid grid-cols-map grid-rows-map" >
-
-            <div class="h-[calc(100vh-70px)] outline outline-1 outline-gray-200 rounded-lg bg-white overflow-y-auto row-span-2 select-none">
-                <ul class="p-4">
-                    <ListElement v-for="m in municipalities"
-                        :key="m.cvegeo"
-                        :municipality="m"
-                        v-on:municipalityClick="handleMunicipalityListItem"
-                        v-on:locationClick="handleMunicipalityListItemLocation"
-                    />
-                </ul>
-            </div>
-
-            <div class=" flex flex-col items-center h-full outline outline-1 outline-gray-200 rounded-lg bg-emerald-100 overflow-clip row-span-2">
-
-                <div v-if="dataSelected" class="absolute flex items-center justify-center">
-                    <div class="p-2 shadow-lg outline outline-1 min-w-[32rem] outline-gray-200 rounded-lg opacity-90 bg-gray-100 flex flex-col items-end z-[990]">
-                        <div class="absolute flex">
-                            <button v-on:click="resetMapPosition" class="cursor-pointer text-gray-500 rounded-2xl hover:bg-white ml-auto">
-                                <CloseIcon class="w-5 h-5 p-1"/>
-                            </button>
-                        </div>
+        <div class="max-w-7xl mx-auto">
+            <div class="w-full h-height grid custom-grid gap-4">
+                <div class="h-[calc(100vh-70px)] overflow-y-auto row-span-2 select-none">
+                    <p class="bg-white text-center text-gray-500 text-sm py-2 mx-4 mt-4 rounded sticky top-0">Ubica la oficina más cercana a tu domicilio y acude a presentar tu denuncia</p>
+                    <ul class="p-4">
+                        <ListElement v-for="m in municipalities"
+                            :key="m.cvegeo"
+                            :municipality="m"
+                            v-on:municipalityClick="handleMunicipalityListItem"
+                            v-on:locationClick="handleMunicipalityListItemLocation"
+                        />
+                    </ul>
+                </div>
+    
+                <div class="flex flex-col items-center rounded-lg row-span-2 relative ">
+                    <div v-if="dataSelected" class="absolute top-0 left-0 backdrop-blur-sm bg-white/50 p-2 shadow-md rounded-md flex flex-col items-end w-full z-20">
+                        <button v-on:click="resetMapPosition" class="cursor-pointer text-gray-500 rounded-2xl hover:bg-white ml-auto absolute right-2 top-2">
+                            <CloseIcon class="w-6 h-6 p-1"/>
+                        </button>
                         <div class="w-full h-full overflow-auto flex flex-col gap-1 items-center">
                             <div class="text-gray-800 text-xl uppercase">{{ dataSelected.Municipio }}</div>
                             <div class="text-gray-800 text-sm uppercase">{{ dataSelected.Oficina }}</div>
                             <div class="text-gray-800 text-xs uppercase">{{ dataSelected.Direccion }}</div>
                         </div>
                     </div>
+    
+                    <div id="map" class="w-full h-full rounded-md z-10" />
                 </div>
-
-                <div id="map" class="w-full h-full" />
-
             </div>
-            
         </div>
     </GuestLayout>
 
