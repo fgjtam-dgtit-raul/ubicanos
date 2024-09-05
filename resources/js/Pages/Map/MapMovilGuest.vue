@@ -224,30 +224,23 @@ function scrollElementIntoView(cvegeo){
 
     <GuestLayout>
 
-        <div class="p-0 w-full h-full gap-0 flex flex-col items-center">
-
-            <div class="w-full h-full outline outline-1 outline-gray-200 bg-emerald-100 overflow-clip">
-                <div v-if="dataSelected" class="w-full absolute flex flex-col items-stretch">
-                    <div class="p-2 shadow-lg outline outline-1 outline-gray-200 rounded-lg opacity-90 bg-gray-100 flex flex-col items-end z-[990]">
-                        <div class="absolute flex">
-                            <button v-on:click="resetMapPosition" class="cursor-pointer text-gray-500 rounded-2xl hover:bg-white ml-auto">
-                                <CloseIcon class="w-5 h-5 p-1"/>
-                            </button>
-                        </div>
-                        <div class="w-full h-full overflow-auto flex flex-col gap-1 items-center">
-                            <div class="text-gray-800 text-lg uppercase">{{ dataSelected.Municipio }}</div>
-                            <div v-if="dataSelected.Oficina" class="text-gray-800 text-sm uppercase">{{ dataSelected.Oficina }}</div>
-                            <div v-if="dataSelected.Direccion" class="text-gray-800 text-xs uppercase">{{ dataSelected.Direccion }}</div>
-                        </div>
+        <div class="p-0 w-full h-svh gap-0 flex flex-col items-center">
+            <div class="w-full h-1/2 relative">
+                <div v-if="dataSelected" class="absolute top-0 left-0 backdrop-blur-sm bg-white/50 p-2 shadow-md rounded-md flex flex-col items-end w-full z-20">
+                    <button v-on:click="resetMapPosition" class="cursor-pointer text-gray-500 rounded-2xl hover:bg-white ml-auto absolute right-2 top-2">
+                        <CloseIcon class="w-6 h-6 p-1"/>
+                    </button>
+                    <div class="w-full h-full overflow-auto flex flex-col items-center">
+                        <div class="text-gray-800 uppercase">{{ dataSelected.Municipio }}</div>
                     </div>
                 </div>
 
                 <div id="map" class="w-full h-full" />
-
             </div>
 
-            <div class="w-full h-[16rem] outline outline-1 outline-gray-200 bg-white overflow-y-auto row-span-2 select-none">
-                <ul class="h-full">
+            <div class="w-full h-1/2 overflow-y-auto">
+                <p class="bg-white text-center text-gray-500 text-sm py-2 mt-4 rounded sticky top-0">Ubica la oficina más cercana a tu domicilio y acude a presentar tu denuncia</p>
+                <ul>
                     <ListElement v-for="m in municipalities"
                         :key="m.cvegeo"
                         :municipality="m"
@@ -256,7 +249,6 @@ function scrollElementIntoView(cvegeo){
                     />
                 </ul>
             </div>
-
         </div>
 
     </GuestLayout>
