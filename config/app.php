@@ -123,8 +123,6 @@ return [
         'store' => env('APP_MAINTENANCE_STORE', 'database'),
     ],
 
-
-
     "AUTH_API_ENDPOINT" => env('AUTH_API_ENDPOINT'),
     "AUTH_API_TOKEN" => env('AUTH_API_TOKEN'),
 

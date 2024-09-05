@@ -224,10 +224,10 @@ function scrollElementIntoView(cvegeo){
     <Head title="Ubicacion oficinas" />
     
     <GuestLayout>
-        <div class="max-w-screen-2xl mx-auto p-2 w-full h-full gap-1 grid grid-cols-map grid-rows-map shadow-lg" >
+        <div class="max-w-screen-2xl h-height gap-1 grid grid-cols-map grid-rows-map" >
 
-            <div class="h-full outline outline-1 outline-gray-200 rounded-lg bg-white overflow-y-auto row-span-2 select-none">
-                <ul class="">
+            <div class="h-[calc(100vh-70px)] outline outline-1 outline-gray-200 rounded-lg bg-white overflow-y-auto row-span-2 select-none">
+                <ul class="p-4">
                     <ListElement v-for="m in municipalities"
                         :key="m.cvegeo"
                         :municipality="m"

@@ -29,21 +29,20 @@ class HomeController extends Controller
 
 
     function index(Request $request) {
-
         // * validate the request
         $response = $this->validateAuthSessionToken($request);
-        if( $response instanceof RedirectResponse){
+        if( $response instanceof RedirectResponse) {
             return $response;
         }
 
-         // * set center of the map
-         $centerMap = array(24.853449, -98.827877);
+        // * set center of the map
+        $centerMap = array(24.853449, -98.827877);
 
-         // * get municipalities data
-         $municipalities = \App\Models\Municipality::all();
+        // * get municipalities data
+        $municipalities = \App\Models\Municipality::all();
 
-         // * load municipalities polygons and append the center propertie
-         $municipalitiesGeom = $this->mapService->getMunicipalitiesPolygons();
+        // * load municipalities polygons and append the center propertie
+        $municipalitiesGeom = $this->mapService->getMunicipalitiesPolygons();
 
         // * return view based on movil or desktop
         $agent = new Agent();
@@ -73,8 +72,7 @@ class HomeController extends Controller
     }
 
     function redirectFiscaliaDigital(Request $request){
-        return Inertia::render('Redirect', [
-        ]);
+        return Inertia::render('Redirect');
     }
 
     #region private methods
@@ -97,7 +95,8 @@ class HomeController extends Controller
             }
         }
 
-        if( !isset($sessionToken)){
+        
+        if(!$sessionToken){
             Log::notice("Session cookie it's not presented.");
             return redirect()->route('fiscalia-digital');
         }

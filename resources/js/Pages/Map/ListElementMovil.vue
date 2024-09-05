@@ -17,10 +17,9 @@ const handleLocationClick = (e, location)=>{
 </script>
 
 <template>
-    <li class="border-b px-2 py-1 rounded-b-lg hover:bg-gray-100" :id="municipality.cvegeo">
-                        
+    <li class="border-b p-2 rounded-b-lg hover:bg-gray-100" :id="municipality.cvegeo">
         <h2 v-on:click="handleOnMunicipalityClick" class="hover:underline uppercase py-1 font-semibold sticky top-0 bg-inherit cursor-pointer">
-            {{ municipality.name}}
+            {{ municipality.name }}
         </h2>
 
         <ul class="mt-0 ml-2 space-y-1">
@@ -31,6 +30,5 @@ const handleLocationClick = (e, location)=>{
                 </p>
             </li>
         </ul>
-
     </li>
 </template>
