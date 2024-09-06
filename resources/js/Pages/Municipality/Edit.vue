@@ -1,7 +1,6 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 import { Head, useForm, router } from '@inertiajs/vue3';
-import { formatDatetime } from '@/utils/date.js';
 
 import AuthenticatedLayout from '@/Layouts/AuthenticatedLayout.vue';
 
@@ -9,20 +8,16 @@ import NavLink from '@/Components/NavLink.vue';
 import PrimaryButton from '@/Components/PrimaryButton.vue';
 import Breadcrumb from '@/Components/Breadcrumb.vue';
 import Card from '@/Components/Card.vue';
-import CardTitle from '@/Components/CardTitle.vue';
-import CardText from '@/Components/CardText.vue';
-import InputText from '@/Components/InputText.vue';
-import InputNumber from '@/Components/InputNumber.vue';
 import SuccessButton from '@/Components/SuccessButton.vue';
 import DangerButton from '@/Components/DangerButton.vue';
-import TrashCanIcon from '@/Components/Icons/TrashCanIcon.vue';
-import InputError from '@/Components/InputError.vue';
+import LocationFormEdit from "./Partials/LocationFormEdit.vue";
 
 /**
  * @typedef {Object} Location
  * @property {string} name - The name of the location.
  * @property {string} address - The address of the location.
  * @property {number[]} geolocation - The geolocation of the location as an array [latitude, longitude].
+ * @property {string[]} tags
  */
 
 const props = defineProps({
@@ -85,6 +80,10 @@ function cancelClick(){
     });
 }
 
+function updateLocationTags(index, tags){
+    form.locations[index].tags = tags.value;
+}
+
 </script>
 
 <template>
@@ -122,36 +121,14 @@ function cancelClick(){
 
                         <div class="w-full mt-4 col-span-3 border rounded bg-gray-100 h-full overflow-y-scroll">
                             <PrimaryButton class="m-2" v-on:click="newOfficeClick"> Agregar Oficina</PrimaryButton>
-                            <div v-for="(location, index) in form.locations" :key="index" class=" grid grid-cols-[1fr_24rem_auto] gap-2 m-2 p-2 shadow bg-white border rounded-lg">
-                                <div class="w-full">
-                                    <CardTitle>Nombre</CardTitle>
-                                    <InputText v-model="location.name" />
-                                    <InputError class="col-span-3" :message="form.errors[`locations.${index}.name`]" />
-                                
-                                    <CardTitle class="mt-2">Direccion</CardTitle>
-                                    <InputText v-model="location.address" />
-                                    <InputError class="col-span-3" :message="form.errors[`locations.${index}.address`]" />
-                                </div>
 
-                                <div class="w-[24rem] pl-2">
-                                    <CardTitle>Latitud</CardTitle>
-                                    <InputNumber v-model="location.geolocation[0]" />
-                                    <InputError class="col-span-3" :message="form.errors[`locations.${index}.geolocation.0`]" />
-
-                                    <CardTitle class="mt-2">Longitud</CardTitle>
-                                    <InputNumber v-model="location.geolocation[1]" />
-                                    <InputError class="col-span-3" :message="form.errors[`locations.${index}.geolocation.1`]" />
-                                </div>
-
-                                <div class="w-fit pl-2 flex">
-                                    <DangerButton v-on:click="removeOfficeClick(index)">
-                                        <TrashCanIcon class="w-4 h-4" />
-                                    </DangerButton>
-                                </div>
-
-                                <InputError class="col-span-3" :message="form.errors[`locations.${index}.geolocation`]" />
-
-                            </div>
+                            <LocationFormEdit v-for="(location, index) in form.locations"
+                                :key="index"
+                                :location="location"
+                                :errors="form.errors"
+                                v-on:removeOffice="removeOfficeClick(index)"
+                                v-on:tagsUpdated="((tags) => updateLocationTags(index, tags))"
+                            />
 
                         </div>
 
