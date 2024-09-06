@@ -21,3 +21,4 @@ yarn-error.log
 /.vscode
 docker-compose.override.yml
 database/mongodb/*
+*.Identifier
