@@ -29,6 +29,12 @@ class HomeController extends Controller
 
 
     function index(Request $request) {
+
+        $tags = array();
+        if( $request->filled('tags')){
+            $tags = explode(",", $request->input('tags'));
+        }
+
         // * validate the request
         $response = $this->validateAuthSessionToken($request);
         if( $response instanceof RedirectResponse) {
@@ -39,7 +45,12 @@ class HomeController extends Controller
         $centerMap = array(24.853449, -98.827877);
 
         // * get municipalities data
-        $municipalities = \App\Models\Municipality::all();
+        $municipalities = \App\Models\Municipality::get()->all();
+
+        // * filter municipalities-locations by tags
+        if(!empty($tags)){
+            $municipalities = $this->filterMunicipalitiesLocationsByTags($municipalities, $tags);
+        }
 
         // * load municipalities polygons and append the center propertie
         $municipalitiesGeom = $this->mapService->getMunicipalitiesPolygons();
@@ -64,7 +75,7 @@ class HomeController extends Controller
                 "title" => "Hola mundo",
                 "person" => $response,
                 "centerMap" => $centerMap,
-                "municipalities" => $municipalities,
+                "municipalities" => array_values( $municipalities ),
                 "municipalitiesGeom" => $municipalitiesGeom
             ]);
         }
@@ -115,6 +126,35 @@ class HomeController extends Controller
 
         return $userResponse;
     }
+
+    private function filterMunicipalitiesLocationsByTags( array $municipalities, array $tags){
+        $tagsLower = array_map('strtolower', $tags);
+
+        $newMunic = array_filter( $municipalities, function($municipality) use($tagsLower) {
+
+            $filteredLocations = array_filter( $municipality->locations, function($location) use($tagsLower){
+                if(!isset( $location['tags'] )){
+                    return false;
+                }
+
+                $locationTagsLower = array_map('strtolower', $location['tags']);
+
+                // Check if at least one tag exists in both arrays
+                $matchingTags = array_intersect($locationTagsLower, $tagsLower);
+
+                return !empty($matchingTags);
+
+            });
+
+            // apend filtered locations
+            $municipality->locations = $filteredLocations;
+
+            return !empty($filteredLocations);
+        });
+
+        return $newMunic;
+    }
+
     #endregion
 
 }
