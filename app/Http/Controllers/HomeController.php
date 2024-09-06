@@ -64,7 +64,7 @@ class HomeController extends Controller
                 "title" => "Hola mundo",
                 "person" => $response,
                 "centerMap" => $centerMap,
-                "municipalities" => $municipalities,
+                "municipalities" => array_values ($municipalities),
                 "municipalitiesGeom" => $municipalitiesGeom
             ]);
 
@@ -147,7 +147,7 @@ class HomeController extends Controller
             });
 
             // apend filtered locations
-            $municipality->locations = $filteredLocations;
+            $municipality->locations = array_values($filteredLocations);
 
             return !empty($filteredLocations);
         });

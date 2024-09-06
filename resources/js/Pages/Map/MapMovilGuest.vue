@@ -39,10 +39,11 @@ function initializeMap() {
         zoom: 8,
         dragging: true,
         scrollWheelZoom: false,
-        touchZoom: false,
+        touchZoom: true,
         zoomControl: false,
         doubleClickZoom: false
     });
+
 
     // * center the view based on the bound
     var corner1 = L.latLng(28.115100, -100.261120), corner2 = L.latLng(22.143872, -97.082750);
