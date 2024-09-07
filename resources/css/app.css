@@ -84,6 +84,10 @@ footer .footer-link:hover {
     }
 }
 
+.bg-gray-700 {
+    background-color: rgb(51 65 85);
+}
+
 .custom-grid {
     grid-template-columns: 1fr 50rem;
 }
