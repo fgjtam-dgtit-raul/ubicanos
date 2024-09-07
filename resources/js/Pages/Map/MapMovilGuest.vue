@@ -27,12 +27,13 @@ const bounds = ref({});
 
 const dataSelected = ref(null);
 
+const selectedMunicipality = ref(null);
+
 onMounted(()=>{
     initializeMap();
 })
 
 function initializeMap() {
-    
     // * load map
     map.value = L.map('map', {
         center: L.latLng( props.centerMap[0], props.centerMap[1]),
@@ -43,7 +44,6 @@ function initializeMap() {
         zoomControl: false,
         doubleClickZoom: false
     });
-
 
     // * center the view based on the bound
     var corner1 = L.latLng(28.115100, -100.261120), corner2 = L.latLng(22.143872, -97.082750);
@@ -154,7 +154,8 @@ function handleMarkerOnClick(e){
     moveMap(e.target._latlng, 16.5);
 }
 
-function handleMunicipalityListItem(municipality){
+function handleMunicipalityListItem(municipality) {
+    selectedMunicipality.value = municipality.cvegeo; // Update the selected municipality
 
     const polygon = polygons.value.filter( item => item.data.NOM_MUN == municipality.name);
 
@@ -180,7 +181,8 @@ function handleMunicipalityListItem(municipality){
     }
 }
 
-function handleMunicipalityListItemLocation(municipality, location){
+function handleMunicipalityListItemLocation(municipality, location) {
+    selectedMunicipality.value = municipality.cvegeo; // Update the selected municipality
 
     try {
 
@@ -226,7 +228,7 @@ function scrollElementIntoView(cvegeo){
     <GuestLayout>
 
         <div class="p-0 w-full h-svh gap-0 flex flex-col items-center">
-            <div class="w-full h-1/2 relative">
+            <div class="w-full h-1/3 relative">
                 <div v-if="dataSelected" class="absolute top-0 left-0 backdrop-blur-sm bg-white/50 p-2 shadow-md rounded-md flex flex-col items-end w-full z-20">
                     <button v-on:click="resetMapPosition" class="cursor-pointer text-gray-500 rounded-2xl hover:bg-white ml-auto absolute right-2 top-2">
                         <CloseIcon class="w-6 h-6 p-1"/>
@@ -239,14 +241,15 @@ function scrollElementIntoView(cvegeo){
                 <div id="map" class="w-full h-full" />
             </div>
 
-            <div class="w-full h-1/2 overflow-y-auto">
-                <p class="bg-white text-center text-gray-500 text-sm py-2 mt-4 rounded sticky top-0">Ubica la oficina más cercana a tu domicilio y acude a presentar tu denuncia</p>
+            <div class="w-full h-2/3 overflow-y-auto">
+                <p class="bg-white text-center text-gray-500 text-xs py-2 mt-4 rounded sticky top-0">Ubica la oficina más cercana a tu domicilio y acude a presentar tu denuncia</p>
                 <ul>
                     <ListElement v-for="m in municipalities"
                         :key="m.cvegeo"
                         :municipality="m"
                         v-on:municipalityClick="handleMunicipalityListItem"
                         v-on:locationClick="handleMunicipalityListItemLocation"
+                        :isSelected="selectedMunicipality === m.cvegeo"
                     />
                 </ul>
             </div>

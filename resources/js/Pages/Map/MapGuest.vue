@@ -27,6 +27,8 @@ const bounds = ref({});
 
 const dataSelected = ref(null);
 
+const selectedMunicipality = ref(null);
+
 onMounted(()=>{
     initializeMap();
 })
@@ -157,6 +159,7 @@ function handleMarkerOnClick(e){
 }
 
 function handleMunicipalityListItem(municipality){
+    selectedMunicipality.value = municipality.cvegeo; // Update the selected municipality
 
     const polygon = polygons.value.filter( item => item.data.NOM_MUN == municipality.name);
 
@@ -183,6 +186,7 @@ function handleMunicipalityListItem(municipality){
 }
 
 function handleMunicipalityListItemLocation(municipality, location){
+    selectedMunicipality.value = municipality.cvegeo; // Update the selected municipality
 
     try {
 
@@ -219,6 +223,10 @@ function scrollElementIntoView(cvegeo){
         document.getElementById(cvegeo).scrollIntoView();
     } catch (error) { }
 }
+
+const handleMunicipalityClick = (municipality) => {
+  selectedMunicipality.value = municipality.cvegeo; // Update the selected municipality
+}
 </script>
 
 <template>
@@ -229,13 +237,14 @@ function scrollElementIntoView(cvegeo){
         <div class="max-w-7xl mx-auto">
             <div class="w-full h-height grid custom-grid gap-4">
                 <div class="h-[calc(100vh-70px)] overflow-y-auto row-span-2 select-none">
-                    <p class="bg-white text-center text-gray-500 text-sm py-2 mx-4 mt-4 rounded sticky top-0">Ubica la oficina más cercana a tu domicilio y acude a presentar tu denuncia</p>
+                    <p class="bg-white text-gray-500 py-2 mx-4 mt-4 rounded sticky top-0">Ubica la oficina más cercana a tu domicilio y acude a presentar tu denuncia</p>
                     <ul class="p-4">
                         <ListElement v-for="m in municipalities"
                             :key="m.cvegeo"
                             :municipality="m"
                             v-on:municipalityClick="handleMunicipalityListItem"
                             v-on:locationClick="handleMunicipalityListItemLocation"
+                            :isSelected="selectedMunicipality === m.cvegeo"
                         />
                     </ul>
                 </div>
