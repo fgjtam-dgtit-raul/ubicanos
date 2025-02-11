@@ -58,7 +58,7 @@ class MunicipalityController extends Controller
         // retrive the municipality
         $municipality = Municipality::find($municipality_id);
         $municipality->locations = $request->input('locations');
-        $municipality->save();
+        $municipality->push();
 
         return redirect()->route('municipality.index' );
 

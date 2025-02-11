@@ -124,6 +124,7 @@ function updateLocationTags(index, tags){
 
                             <LocationFormEdit v-for="(location, index) in form.locations"
                                 :key="index"
+                                :index="index"
                                 :location="location"
                                 :errors="form.errors"
                                 v-on:removeOffice="removeOfficeClick(index)"
