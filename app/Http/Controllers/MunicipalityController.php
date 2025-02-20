@@ -55,13 +55,23 @@ class MunicipalityController extends Controller
             "locations.*.geolocation.*" => "coordenada"
         ]);
 
-        // retrive the municipality
+        // * retrive the municipality
         $municipality = Municipality::find($municipality_id);
-        $municipality->locations = $request->input('locations');
+        $_locations = $request->input('locations');
+
+        // * ensuer the location has a id
+        foreach($_locations as &$location)
+        {
+            if(!isset($location['location_id']))
+            {
+                $location['location_id'] = bin2hex(random_bytes(12));
+            }
+        }
+
+        $municipality->locations = $_locations;
         $municipality->push();
 
-        return redirect()->route('municipality.index' );
-
+        return redirect()->route('municipality.index');
     }
 
 }
