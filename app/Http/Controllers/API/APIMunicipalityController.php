@@ -26,12 +26,24 @@ class APIMunicipalityController extends Controller
     public function getMunicipality(string $municipalityId)
     {
         $municipality = Municipality::find($municipalityId);
+        if($municipality == null)
+        {
+            return response()->json([
+                "message" => sprintf("Municipality %s not found", $municipalityId)
+            ], 404);
+        }
         return response()->json($municipality, 200);
     }
 
     public function getLocations(string $municipalityId)
     {
-        $locations = Municipality::find($municipalityId)->locations;
-        return response()->json($locations, 200);
+        $municipality = Municipality::find($municipalityId);
+        if($municipality == null)
+        {
+            return response()->json([
+                "message" => sprintf("Municipality %s not found", $municipalityId)
+            ], 404);
+        }
+        return response()->json($municipality->locations, 200);
     }
 }
