@@ -9,12 +9,12 @@ use App\Http\Controllers\{
     MunicipalityController
 };
 
-Route::get('/', [HomeController::class, 'index'])->named("home");
+Route::prefix("/")->group(function(){
+    Route::get('/', [HomeController::class, 'index'])->name("home");
+    Route::get('/fiscalia-digital', [HomeController::class, 'redirectFiscaliaDigital'])->name('fiscalia-digital');
+});
 
-Route::get('/fiscalia-digital', [HomeController::class, 'redirectFiscaliaDigital'])->name('fiscalia-digital');
-
-Route::middleware('auth')->group(function () {
-
+Route::middleware('auth')->group(function(){
     Route::get('/admin', fn() => Inertia::render('Dashboard') )->name('dashboard');
 
     Route::prefix('municipality')->name('municipality.')->group(function(){

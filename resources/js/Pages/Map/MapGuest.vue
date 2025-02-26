@@ -234,9 +234,9 @@ const handleMunicipalityClick = (municipality) => {
     <Head title="Ubicacion oficinas" />
     
     <GuestLayout>
-        <div class="max-w-7xl mx-auto">
-            <div class="w-full h-height grid custom-grid gap-4">
-                <div class="h-[calc(100vh-70px)] overflow-y-auto row-span-2 select-none">
+        <div class="h-full max-w-screen-2xl mx-auto p-1">
+            <div class="h-full w-full grid grid-rows-[100%] grid-cols-[420px_1fr] gap-4">
+                <div class="overflow-y-auto select-none">
                     <p class="bg-white text-gray-500 py-2 mx-4 mt-4 rounded sticky top-0">Ubica la oficina más cercana a tu domicilio y acude a presentar tu denuncia</p>
                     <ul class="p-4">
                         <ListElement v-for="m in municipalities"
@@ -248,8 +248,7 @@ const handleMunicipalityClick = (municipality) => {
                         />
                     </ul>
                 </div>
-    
-                <div class="flex flex-col items-center rounded-lg row-span-2 relative ">
+                <div class="flex flex-col items-center rounded-lg relative ">
                     <div v-if="dataSelected" class="absolute top-0 left-0 backdrop-blur-sm bg-white/50 p-2 shadow-md rounded-md flex flex-col items-end w-full z-20">
                         <button v-on:click="resetMapPosition" class="cursor-pointer text-gray-500 rounded-2xl hover:bg-white ml-auto absolute right-2 top-2">
                             <CloseIcon class="w-6 h-6 p-1"/>
@@ -268,3 +267,4 @@ const handleMunicipalityClick = (municipality) => {
     </GuestLayout>
 
 </template>
+x
