@@ -21,6 +21,7 @@ class HomeController extends Controller
     protected $cookieName = "__fgjtam.auth.session-token";
     protected AuthApiService $authApiService;
     protected MapService $mapService;
+    protected $centerMap = array(24.853449, -98.827877);
 
     function __construct(AuthApiService $authApiService, MapService $mapService) {
         $this->authApiService = $authApiService;
@@ -35,14 +36,14 @@ class HomeController extends Controller
             $tags = explode(",", $request->input('tags'));
         }
 
-        // * validate the request
+        // * validate the request, if not valid redirect to ...
         $response = $this->validateAuthSessionToken($request);
-        if( $response instanceof RedirectResponse) {
-            return $response;
+        if( $response instanceof RedirectResponse)
+        {
+            // * the response is a redirect to fiscalia digital, override to display the map without the person data.
+            // return $response;
+            $response = null;
         }
-
-        // * set center of the map
-        $centerMap = array(24.853449, -98.827877);
 
         // * get municipalities data
         $municipalities = \App\Models\Municipality::get()->all();
@@ -61,9 +62,9 @@ class HomeController extends Controller
 
             // * return view
             return Inertia::render("Map/MapMovilGuest", [
-                "title" => "Hola mundo",
+                "title" => "Mapa",
                 "person" => $response,
-                "centerMap" => $centerMap,
+                "centerMap" => $this->centerMap,
                 "municipalities" => array_values ($municipalities),
                 "municipalitiesGeom" => $municipalitiesGeom
             ]);
@@ -72,14 +73,13 @@ class HomeController extends Controller
 
             // * return view
             return Inertia::render("Map/MapGuest", [
-                "title" => "Hola mundo",
+                "title" => "Mapa",
                 "person" => $response,
-                "centerMap" => $centerMap,
+                "centerMap" => $this->centerMap,
                 "municipalities" => array_values( $municipalities ),
                 "municipalitiesGeom" => $municipalitiesGeom
             ]);
         }
-
     }
 
     function redirectFiscaliaDigital(Request $request){
@@ -154,7 +154,6 @@ class HomeController extends Controller
 
         return $newMunic;
     }
-
     #endregion
 
 }

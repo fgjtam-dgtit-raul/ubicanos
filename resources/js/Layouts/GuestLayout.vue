@@ -59,6 +59,16 @@ const showingNavigationDropdown = ref(false);
                             </Dropdown>
                         </div>
                     </div>
+                    <div v-else class="hidden sm:flex sm:items-center sm:ms-6">
+                        <div class="ms-3 relative">
+                            <div class="w-32 bg-[#334155] text-white text-center rotate-45">
+                                <span class="inline-flex rounded-md">
+                                    Invitado
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+
 
                     <!-- Hamburger -->
                     <div class="-me-2 flex items-center sm:hidden">
