@@ -11,6 +11,7 @@ import Card from '@/Components/Card.vue';
 import SuccessButton from '@/Components/SuccessButton.vue';
 import DangerButton from '@/Components/DangerButton.vue';
 import LocationFormEdit from "./Partials/LocationFormEdit.vue";
+import AnimateSpin from "@/Components/Icons/AnimateSpin.vue";
 
 /**
  * @typedef {Object} Location
@@ -54,7 +55,20 @@ function newLocationRecord(){
 }
 
 function newOfficeClick(){
-    form.locations.push( newLocationRecord() );
+    if(loading.value)
+    {
+        return;
+    }
+
+    loading.value = true;
+    form.locations.push(newLocationRecord());
+
+    // scroll to the bottom
+    setTimeout(()=>{
+        window.scrollTo(0, document.body.scrollHeight);
+
+        loading.value = false;
+    },500);
 }
 
 function saveChangesClick(){
@@ -120,7 +134,10 @@ function updateLocationTags(index, tags){
                         </div>
 
                         <div class="w-full mt-4 col-span-3 border rounded bg-gray-100 h-full overflow-y-scroll">
-                            <PrimaryButton class="m-2" v-on:click="newOfficeClick"> Agregar Oficina</PrimaryButton>
+                            <PrimaryButton class="m-2" v-on:click="newOfficeClick">
+                                <AnimateSpin v-if="loading" class="w-4 h-4 mr-1" />
+                                Agregar Oficina
+                            </PrimaryButton>
 
                             <LocationFormEdit v-for="(location, index) in form.locations"
                                 :key="index"

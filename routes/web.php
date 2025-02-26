@@ -8,6 +8,7 @@ use App\Http\Controllers\{
     ProfileController,
     MunicipalityController
 };
+use App\Http\Controllers\API\APIMunicipalityController;
 
 Route::get('/', [HomeController::class, 'index'])->named("home");
 
@@ -28,6 +29,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+});
+
+Route::prefix('api')->name('api.')->group(function(){
+    Route::get('municipalities', [APIMunicipalityController::class, 'getMumicipalities'])->name('municipalities');
+    Route::get('municipalities/{municipalityId}', [APIMunicipalityController::class, 'getMunicipality'])->name('municipalities.index');
+    Route::get('municipalities/{municipalityId}/locations', [APIMunicipalityController::class, 'getLocations'])->name('municipalities.locations');
 });
 
 require __DIR__.'/auth.php';
