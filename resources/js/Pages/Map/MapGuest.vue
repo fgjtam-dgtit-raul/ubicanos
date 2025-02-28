@@ -4,7 +4,7 @@ import { Head } from '@inertiajs/vue3';
 import L from "leaflet";
 
 import GuestLayout from '@/Layouts/GuestLayout.vue';
-import ListElement from './ListElementMovil.vue';
+import ListElement from './ListElement.vue';
 import CloseIcon from '@/Components/Icons/CloseIcon.vue';
 
 const props = defineProps({

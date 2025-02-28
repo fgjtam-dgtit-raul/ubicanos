@@ -61,11 +61,34 @@ const showingNavigationDropdown = ref(false);
                     </div>
                     <div v-else class="hidden sm:flex sm:items-center sm:ms-6">
                         <div class="ms-3 relative">
-                            <div class="w-32 bg-[#334155] text-white text-center rotate-45">
-                                <span class="inline-flex rounded-md">
-                                    Invitado
-                                </span>
-                            </div>
+                            <Dropdown align="right" width="48">
+                                <template #trigger>
+                                    <span class="inline-flex rounded-md">
+                                        <button
+                                            type="button"
+                                            class="inline-flex items-center px-3 py-2 border border-transparent text-sm leading-4 font-medium rounded-md text-gray-500 bg-white hover:text-gray-700 focus:outline-none transition ease-in-out duration-150"
+                                        >
+                                            <span>Invitado</span>
+                                            <svg
+                                                class="ms-2 -me-0.5 h-4 w-4"
+                                                xmlns="http://www.w3.org/2000/svg"
+                                                viewBox="0 0 20 20"
+                                                fill="currentColor"
+                                            >
+                                                <path
+                                                    fill-rule="evenodd"
+                                                    d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                    clip-rule="evenodd"
+                                                />
+                                            </svg>
+                                        </button>
+                                    </span>
+                                </template>
+
+                                <template #content>
+                                    <a class="block w-full px-4 py-2 text-start text-sm leading-5 text-gray-700 hover:bg-gray-100 focus:outline-none focus:bg-gray-100 transition duration-150 ease-in-out" href="https://fiscaliadigital.fgjtam.gob.mx/crear-cuenta">Registrarse</a>
+                                </template>
+                            </Dropdown>
                         </div>
                     </div>
 
@@ -119,6 +142,23 @@ const showingNavigationDropdown = ref(false);
 
                     <div class="mt-3 space-y-1">
                         <a class="block w-full ps-3 pe-4 py-2 border-l-4 border-transparent text-start text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out" href="https://fiscaliadigital.fgjtam.gob.mx/mi-perfil"> Mi Perfil </a>
+                    </div>
+                </div>
+            </div>
+            <div v-else
+                :class="{ block: showingNavigationDropdown, hidden: !showingNavigationDropdown }"
+                class="sm:hidden absolute w-full bg-white z-[1000]"
+            >
+                <!-- Responsive Settings Options -->
+                <div class="pt-4 pb-1 border-t border-gray-200">
+                    <div class="px-4">
+                        <div class="font-bold text-base text-[#1B2341] uppercase">
+                            Invitado
+                        </div>
+                    </div>
+
+                    <div class="mt-3 space-y-1">
+                        <a class="block w-full ps-3 pe-4 py-2 border-l-4 border-transparent text-start text-base font-medium text-gray-600 hover:text-gray-800 hover:bg-gray-50 hover:border-gray-300 focus:outline-none focus:text-gray-800 focus:bg-gray-50 focus:border-gray-300 transition duration-150 ease-in-out" href="https://fiscaliadigital.fgjtam.gob.mx/crear-cuenta">Registrarse</a>
                     </div>
                 </div>
             </div>
