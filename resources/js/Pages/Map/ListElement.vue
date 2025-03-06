@@ -1,9 +1,10 @@
 <script setup>
 
-import EyeIcon from '@/Components/Icons/EyeIcon.vue';
+import Location from '@/Components/Icons/Location.vue';
 
 const props = defineProps({
-    municipality: Object
+    municipality: Object,
+    isSelected: Boolean
 });
 
 const emit = defineEmits(['municipalityClick', 'locationClick']);
@@ -17,20 +18,30 @@ const handleLocationClick = (e, location)=>{
 </script>
 
 <template>
-    <li class="border-b p-2 rounded-b-lg hover:bg-gray-100" :id="municipality.cvegeo">
-                        
-        <h2 v-on:click="handleOnMunicipalityClick" class="hover:underline uppercase py-2 text-lg font-semibold sticky top-0 bg-inherit cursor-pointer">
-            {{ municipality.name}}
+    <li
+        :class="{ 'bg-gray-700': isSelected, 'bg-white hover:bg-gray-200': !isSelected }"
+        class="bg-white border p-2 rounded-md shadow-md mb-2"
+        :id="municipality.cvegeo"
+    >
+        <h2
+            :class="{ 'text-gray-100': isSelected, 'text-gray-700': !isSelected }"
+            v-on:click="handleOnMunicipalityClick"
+            class="uppercase mb-1 font-semibold cursor-pointer hover:underline text"
+        >
+            {{ municipality.name }}
         </h2>
 
-        <ul class="mt-2 space-y-2">
+        <ul class="mt-0 ml-4 space-y-1">
             <li v-for="l in municipality.locations">
-                <p v-on:click="(e) => handleLocationClick(e, l)" class="text-sm text-gray-600 hover:underline cursor-pointer flex items-center">
-                    <EyeIcon class="h-3 mx-1" />
+                <p
+                    v-on:click="(e) => handleLocationClick(e, l)"
+                    class="cursor-pointer flex items-center hover:underline text-sm"
+                    :class="{ 'text-gray-200': isSelected, 'text-gray-500': !isSelected }"
+                >
+                    <Location class="h-5 w-5 mr-2" />
                     <div>{{ l.name }}</div>
                 </p>
             </li>
         </ul>
-
     </li>
 </template>
