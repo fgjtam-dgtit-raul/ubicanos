@@ -36,6 +36,11 @@ class HomeController extends Controller
             $tags = explode(",", $request->input('tags'));
         }
 
+        if($request->filled('location'))
+        {
+            $locationId = $request->input('location');
+        }
+
         // * validate the request, if not valid redirect to ...
         $response = $this->validateAuthSessionToken($request);
         if( $response instanceof RedirectResponse)
@@ -53,6 +58,12 @@ class HomeController extends Controller
             $municipalities = $this->filterMunicipalitiesLocationsByTags($municipalities, $tags);
         }
 
+        // * filter the location by id passed by query params
+        if(isset($locationId))
+        {
+            $municipalities = $this->getMunicipalityLocationById($municipalities, $locationId);
+        }
+
         // * load municipalities polygons and append the center propertie
         $municipalitiesGeom = $this->mapService->getMunicipalitiesPolygons();
 
@@ -65,7 +76,7 @@ class HomeController extends Controller
                 "title" => "Mapa",
                 "person" => $response,
                 "centerMap" => $this->centerMap,
-                "municipalities" => array_values ($municipalities),
+                "municipalities" => array_values($municipalities),
                 "municipalitiesGeom" => $municipalitiesGeom
             ]);
 
@@ -76,7 +87,7 @@ class HomeController extends Controller
                 "title" => "Mapa",
                 "person" => $response,
                 "centerMap" => $this->centerMap,
-                "municipalities" => array_values( $municipalities ),
+                "municipalities" => array_values($municipalities),
                 "municipalitiesGeom" => $municipalitiesGeom
             ]);
         }
@@ -154,6 +165,18 @@ class HomeController extends Controller
 
         return $newMunic;
     }
+
+    private function getMunicipalityLocationById(array $municipalities, string $locationId)
+    {
+        $newMunicipalities = array_filter($municipalities, function($municipality) use($locationId) {
+            $filteredLocations = array_filter($municipality->locations, fn($location) => $location['location_id'] == $locationId);
+            $municipality->locations = array_values($filteredLocations);
+            return !empty($filteredLocations);
+        });
+
+        return $newMunicipalities;
+    }
+
     #endregion
 
 }
